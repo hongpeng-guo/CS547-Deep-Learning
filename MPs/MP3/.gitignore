@@ -1,5 +1,5 @@
 # Ignore all content
 /*
 # Except the following files
-!/.gitignore
-!/*.py
+!.gitignore
+!mp3_main.py
