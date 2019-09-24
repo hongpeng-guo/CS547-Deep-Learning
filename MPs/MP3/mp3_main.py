@@ -9,7 +9,7 @@ device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
 
 # Hyper parameters
-num_epochs = 5
+num_epochs = 10
 num_classes = 10
 batch_size = 100
 learning_rate = 0.001
@@ -62,6 +62,7 @@ class ConvNet(nn.Module):
 			nn.BatchNorm2d(32),
 			nn.ReLU(),
 			nn.Conv2d(32, 64, kernel_size=3, padding=1),
+			nn.BatchNorm2d(64),
 			nn.ReLU(),
 			nn.MaxPool2d(kernel_size=2, stride=2),
 
@@ -70,6 +71,7 @@ class ConvNet(nn.Module):
 			nn.BatchNorm2d(128),
 			nn.ReLU(),
 			nn.Conv2d(128, 128, kernel_size=3, padding=1),
+			nn.BatchNorm2d(128),
 			nn.ReLU(),
 			nn.MaxPool2d(kernel_size=2, stride=2),
 			nn.Dropout2d(p=0.05),
@@ -79,6 +81,7 @@ class ConvNet(nn.Module):
 			nn.BatchNorm2d(256),
 			nn.ReLU(),
 			nn.Conv2d(256, 256, kernel_size=3, padding=1),
+			nn.BatchNorm2d(256),
 			nn.ReLU(),
 			nn.MaxPool2d(kernel_size=2, stride=2),
 		)
