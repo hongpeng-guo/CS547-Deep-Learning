@@ -11,22 +11,22 @@ device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 # Hyper parameters
 num_epochs = 5
 num_classes = 10
-batch_size = 50
-learning_rate = 0.01
+batch_size = 100
+learning_rate = 0.001
 
 
 # Training data augmentation
 transform_train = transforms.Compose([
-    transforms.RandomCrop(32, padding=4),
-    transforms.RandomHorizontalFlip(),
-    transforms.ToTensor(),
-    transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)),
+	transforms.RandomCrop(32, padding=4),
+	transforms.RandomHorizontalFlip(),
+	transforms.ToTensor(),
+	transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)),
 ])
 
 # Normalize the test set same as training set without augmentation
 transform_test = transforms.Compose([
-    transforms.ToTensor(),
-    transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)),
+	transforms.ToTensor(),
+	transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)),
 ])
 
 
@@ -57,32 +57,30 @@ class ConvNet(nn.Module):
 
 		self.conv_layer = nn.Sequential(
 
-			# The first two layers from the first block.
-			nn.Conv2d(3, 16, kernel_size=5, stride=1, padding=2),
-			nn.BatchNorm2d(16),
+			# Conv Layer block 1
+			nn.Conv2d(3, 32, kernel_size=3, padding=1),
+			nn.BatchNorm2d(32),
 			nn.ReLU(),
-			nn.Conv2d(16, 64, kernel_size=5, stride=1, padding=2),
-			nn.BatchNorm2d(64),
-			nn.ReLU(),
-			nn.MaxPool2d(kernel_size=2, stride=2),
-			nn.Dropout2d(p=0.10),
-
-			# The 3  layer forms the second block
-			nn.Conv2d(64, 64, kernel_size=5, stride=1, padding=2),
-			nn.BatchNorm2d(64),
+			nn.Conv2d(32, 64, kernel_size=3, padding=1),
 			nn.ReLU(),
 			nn.MaxPool2d(kernel_size=2, stride=2),
-			nn.Dropout2d(p=0.10),
 
-			# The 4, 5 layers form the third block
-			nn.Conv2d(64, 64, kernel_size=3, stride=1, padding=1),
-			nn.BatchNorm2d(64),
+			# Conv Layer block 2
+			nn.Conv2d(64, 128, kernel_size=3, padding=1),
+			nn.BatchNorm2d(128),
 			nn.ReLU(),
-			nn.Dropout2d(p=0.10),
-			nn.Conv2d(64, 64, kernel_size=3, stride=1, padding=1),
-			nn.BatchNorm2d(64),
+			nn.Conv2d(128, 128, kernel_size=3, padding=1),
 			nn.ReLU(),
-			nn.Dropout2d(p=0.10),
+			nn.MaxPool2d(kernel_size=2, stride=2),
+			nn.Dropout2d(p=0.05),
+
+			# Conv Layer block 3
+			nn.Conv2d(128, 256, kernel_size=3, padding=1),
+			nn.BatchNorm2d(256),
+			nn.ReLU(),
+			nn.Conv2d(256, 256, kernel_size=3, padding=1),
+			nn.ReLU(),
+			nn.MaxPool2d(kernel_size=2, stride=2),
 		)
 
 		self.fc_layer = nn.Sequential(
