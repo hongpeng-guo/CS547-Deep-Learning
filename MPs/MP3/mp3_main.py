@@ -57,29 +57,29 @@ class ConvNet(nn.Module):
 
 		self.conv_layer = nn.Sequential(
 
-			# Conv Layer block 1
 			nn.Conv2d(3, 32, kernel_size=3, padding=1),
 			nn.BatchNorm2d(32),
 			nn.ReLU(),
+
 			nn.Conv2d(32, 64, kernel_size=3, padding=1),
 			nn.BatchNorm2d(64),
 			nn.ReLU(),
 			nn.MaxPool2d(kernel_size=2, stride=2),
 
-			# Conv Layer block 2
 			nn.Conv2d(64, 128, kernel_size=3, padding=1),
 			nn.BatchNorm2d(128),
 			nn.ReLU(),
+
 			nn.Conv2d(128, 128, kernel_size=3, padding=1),
 			nn.BatchNorm2d(128),
 			nn.ReLU(),
 			nn.MaxPool2d(kernel_size=2, stride=2),
 			nn.Dropout2d(p=0.05),
 
-			# Conv Layer block 3
 			nn.Conv2d(128, 256, kernel_size=3, padding=1),
 			nn.BatchNorm2d(256),
 			nn.ReLU(),
+			
 			nn.Conv2d(256, 256, kernel_size=3, padding=1),
 			nn.BatchNorm2d(256),
 			nn.ReLU(),
