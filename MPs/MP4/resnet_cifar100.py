@@ -35,8 +35,7 @@ testloader = torch.utils.data.DataLoader(testset, batch_size=batch_size, shuffle
 
 
 
-
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 
 # YOUR CODE GOES HERE
