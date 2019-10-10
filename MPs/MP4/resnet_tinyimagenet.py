@@ -192,11 +192,11 @@ for epoch in range(num_epochs):
 		
 		print ('Epoch [{}/{}], Loss: {:.4f}'.format(epoch+1, num_epochs, loss.item()))
 	   
-	   
+
 	# Test the model
 	with torch.no_grad():
 		model.eval()
-		totoal, correct = 0, 0
+		total, correct = 0, 0
 		for batch_idx, (X_test_batch, Y_test_batch) in enumerate(testloader):
 			X_test_batch, Y_test_batch= X_test_batch.to(device),Y_test_batch.to(device)
 			outputs = model(X_test_batch)
