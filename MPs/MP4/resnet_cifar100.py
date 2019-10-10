@@ -157,14 +157,14 @@ for epoch in range(num_epochs):
 		optimizer.zero_grad()
 		loss.backward()
 		optimizer.step()
+
+		print ('Epoch [{}/{}], Loss: {:.4f}'.format(epoch+1, num_epochs, loss.item()))
 		
-		if (batch_idx + 1) % 100 == 0:
-			print ('Epoch [{}/{}], Step [{}/{}], Loss: {:.4f}' 
-				   .format(epoch+1, num_epochs, batch_idx+1, total_step, loss.item()))
 	   
 	# Test the model
 	with torch.no_grad():
 		model.eval()
+		totoal, correct = 0, 0
 		for batch_idx, (X_test_batch, Y_test_batch) in enumerate(testloader):
 			X_test_batch, Y_test_batch= X_test_batch.to(device),Y_test_batch.to(device)
 			outputs = model(X_test_batch)

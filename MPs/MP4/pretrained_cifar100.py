@@ -75,13 +75,13 @@ for epoch in range(num_epochs):
 		loss.backward()
 		optimizer.step()
 		
-		if (batch_idx + 1) % 100 == 0:
-			print ('Epoch [{}/{}], Step [{}/{}], Loss: {:.4f}' 
-				   .format(epoch+1, num_epochs, batch_idx+1, total_step, loss.item()))
+		print ('Epoch [{}/{}],  Loss: {:.4f}'.format(epoch+1, num_epochs, loss.item()))
+	   
 	   
 	# Test the model
 	with torch.no_grad():
 		model.eval()
+		totoal, correct = 0, 0
 		for batch_idx, (X_test_batch, Y_test_batch) in enumerate(testloader):
 			X_test_batch, Y_test_batch= X_test_batch.to(device),Y_test_batch.to(device)
 			outputs = model(X_test_batch)
@@ -89,7 +89,7 @@ for epoch in range(num_epochs):
 			total += Y_test_batch.size(0)
 			correct += (predicted == Y_test_batch).sum().item()
 
-		print('Test Accuracy of the model on the 10000 test images: {} %'.format(100 * correct / total))
+			print('Test Accuracy of the model on the 10000 test images: {} %'.format(100 * correct / total))
 
 # Save the model checkpoint
 torch.save(model.state_dict(), 'model.ckpt')
