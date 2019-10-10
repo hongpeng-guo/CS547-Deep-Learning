@@ -156,9 +156,15 @@ for epoch in range(num_epochs):
 		# Backward and optimize
 		optimizer.zero_grad()
 		loss.backward()
+		for group in optimizer.param_groups:
+			for p in group['params']:
+				state = optimizer.state[p]
+				if 'step' in state.keys():
+					if(state['step']>=1024):
+						state['step'] = 1000
 		optimizer.step()
 
-		print ('Epoch [{}/{}], Loss: {:.4f}'.format(epoch+1, num_epochs, loss.item()))
+	print ('Epoch [{}/{}], Loss: {:.4f}'.format(epoch+1, num_epochs, loss.item()))
 
 	   
 	# Test the model
@@ -172,7 +178,7 @@ for epoch in range(num_epochs):
 			total += Y_test_batch.size(0)
 			correct += (predicted == Y_test_batch).sum().item()
 
-		print('Test Accuracy of the model on the 10000 test images: {} %'.format(100 * correct / total))
+	print('Test Accuracy of the model on the 10000 test images: {} %'.format(100 * correct / total))
 
 # Save the model checkpoint
 torch.save(model.state_dict(), 'model.ckpt')

@@ -7,11 +7,11 @@ import time
 import os
 
 model_urls = {
-    'resnet18': 'https://download.pytorch.org/models/resnet18-5c106cde.pth',
-    'resnet34': 'https://download.pytorch.org/models/resnet34-333f7ec4.pth',
-    'resnet50': 'https://download.pytorch.org/models/resnet50-19c8e357.pth',
-    'resnet101': 'https://download.pytorch.org/models/resnet101-5d3b4d8f.pth',
-    'resnet152': 'https://download.pytorch.org/models/resnet152-b121ed2d.pth',
+	'resnet18': 'https://download.pytorch.org/models/resnet18-5c106cde.pth',
+	'resnet34': 'https://download.pytorch.org/models/resnet34-333f7ec4.pth',
+	'resnet50': 'https://download.pytorch.org/models/resnet50-19c8e357.pth',
+	'resnet101': 'https://download.pytorch.org/models/resnet101-5d3b4d8f.pth',
+	'resnet152': 'https://download.pytorch.org/models/resnet152-b121ed2d.pth',
 }
 
 
@@ -20,13 +20,15 @@ batch_size = 128
 learning_rate = 0.001
 
 transform_train = transforms.Compose([
-	transforms.RandomCrop(32, padding=4),
+	transforms.Resize((224, 224)),
+	transforms.RandomCrop(224, padding=4),
 	transforms.RandomHorizontalFlip(),
 	transforms.ToTensor(),
 	transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)),
 ])
 
 transform_test = transforms.Compose([
+	transforms.Resize((224, 224)),
 	transforms.ToTensor(),
 	transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)),
 ])
@@ -45,12 +47,14 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 def resnet18(pretrained=True):
-    model = torchvision.models.resnet.ResNet(torchvision.models.resnet.BasicBlock, [2, 2, 2, 2])
-    if pretrained:
-        model.load_state_dict(model_zoo.load_url(model_urls['resnet18'], model_dir=dir_path))
-    return model
+	model = torchvision.models.resnet.ResNet(torchvision.models.resnet.BasicBlock, [2, 2, 2, 2])
+	if pretrained:
+		model.load_state_dict(model_zoo.load_url(model_urls['resnet18'], model_dir=dir_path))
+	return model
 
 model = resnet18(pretrained=True)
+for param in model.parameters():
+	param.requires_grad = False
 model.fc = nn.Linear(model.fc.in_features, 100)
 model = model.to(device)
 
@@ -73,9 +77,15 @@ for epoch in range(num_epochs):
 		# Backward and optimize
 		optimizer.zero_grad()
 		loss.backward()
+		for group in optimizer.param_groups:
+			for p in group['params']:
+				state = optimizer.state[p]
+				if 'step' in state.keys():
+					if(state['step']>=1024):
+						state['step'] = 1000
 		optimizer.step()
 		
-		print ('Epoch [{}/{}],  Loss: {:.4f}'.format(epoch+1, num_epochs, loss.item()))
+	print ('Epoch [{}/{}],  Loss: {:.4f}'.format(epoch+1, num_epochs, loss.item()))
 	   
 
 	# Test the model
@@ -89,7 +99,7 @@ for epoch in range(num_epochs):
 			total += Y_test_batch.size(0)
 			correct += (predicted == Y_test_batch).sum().item()
 
-			print('Test Accuracy of the model on the 10000 test images: {} %'.format(100 * correct / total))
+		print('Test Accuracy of the model on the 10000 test images: {} %'.format(100 * correct / total))
 
 # Save the model checkpoint
 torch.save(model.state_dict(), 'model.ckpt')

@@ -17,7 +17,7 @@ from mpi4py import MPI
 
 cmd = "/sbin/ifconfig"
 out, err = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE,
-    stderr=subprocess.PIPE).communicate()
+	stderr=subprocess.PIPE).communicate()
 ip = str(out).split("inet addr:")[1].split()[0]
 
 name = MPI.Get_processor_name()
@@ -164,33 +164,34 @@ class ResNet(nn.Module):
 			layers.append(BasicBlock(self.curt_in_channels, out_channels))
 		
 		return nn.Sequential(*layers)    
-    
-    
-model = ResNet(BasicBlock, [2, 4, 4, 2], 100).cuda()
+	
+	
+
+model = ResNet(BasicBlock, [2, 4, 4, 2], 100)
 criterion = nn.CrossEntropyLoss()
-optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
+optimizer = torch.optim.Adam(model.parameters(), learning_rate=learning_rate)
 
 # Make sure that all nodes have the same model
 for param in model.parameters():
-    tensor0 = param.data
-    dist.all_reduce(tensor0, op=dist.reduce_op.SUM)
-    param.data = tensor0/np.sqrt(np.float(num_nodes))
+	tensor0 = param.data
+	dist.all_reduce(tensor0, op=dist.reduce_op.SUM)
+	param.data = tensor0/np.sqrt(np.float(num_nodes))
 
 
 model.cuda()
 
-Path_Save = '/projects/sciteam/bahp/RNN/TinyImageNetModel'
+Path_Save = os.path.dirname(os.path.realpath(__file__))
 #torch.save(model.state_dict(), Path_Save)
 #model.load_state_dict(torch.load(Path_Save))
 
 
-LR = 0.001
+learning_rate = 0.001
 batch_size = 100
-Num_Epochs = 1000
+num_epochs = 1000
 
 
 criterion = nn.CrossEntropyLoss()
-optimizer = optim.RMSprop(model.parameters(), lr=LR)
+optimizer = optim.RMSprop(model.parameters(), learning_rate=learning_rate)
 
 
 I_permutation = np.random.permutation(L_Y_train)
@@ -206,72 +207,53 @@ x_train = x_train[L_Y_test+1:,:]
 y_train = y_train[L_Y_test+1:]
 L_Y_train = len(y_train)
 
+for epoch in range(num_epochs):
+	# Train the model
+	model.train()
+	for batch_idx, (X_train_batch, Y_train_batch) in enumerate(trainloader):
+		X_train_batch,Y_train_batch= Variable(X_train_batch).cuda(), Variable(Y_train_batch).cuda()	
+		# Forward pass
+		outputs = model(X_train_batch)
+		loss = criterion(outputs, Y_train_batch)
+		# Backward and optimize
+		optimizer.zero_grad()
+		loss.backward()
+		
+		for param in model.parameters():
+			#print(param.grad.data)
+			tensor0 = param.grad.data.cpu()
+			dist.all_reduce(tensor0, op=dist.reduce_op.SUM)
+			tensor0 /= float(num_nodes)
+			param.grad.data = tensor0.cuda() 
+		optimizer.step()
 
+		print ('Epoch [{}/{}], Loss: {:.4f}'.format(epoch+1, num_epochs, loss.item()))
 
-for epoch in range(Num_Epochs):  
-    time1 = time.time()
-    time000 = time.time()
-    I_permutation = np.random.permutation(L_Y_train)
-    x_train =  x_train[I_permutation,:]
-    y_train =  y_train[I_permutation] 
-    time111 = time.time()
-    time222 = time111-time000
-    #print(time222)
-    model.train()
-    for i in range(0, L_Y_train, batch_size):
-        x_train_batch = torch.FloatTensor( x_train[i:i+batch_size,:] )
-        y_train_batch = torch.LongTensor( y_train[i:i+batch_size] )
-        #data, target = Variable(x_train_batch), Variable(y_train_batch)
-        data, target = Variable(x_train_batch).cuda(), Variable(y_train_batch).cuda()
-        optimizer.zero_grad()
-        output = model(data)
-        loss = criterion(output, target)
-        loss.backward()    # calc gradients
-        
-        for param in model.parameters():
-            #print(param.grad.data)
-            tensor0 = param.grad.data.cpu()
-            dist.all_reduce(tensor0, op=dist.reduce_op.SUM)
-            tensor0 /= float(num_nodes)
-            param.grad.data = tensor0.cuda()        
-        
-        optimizer.step()   #update gradients
-        
-    model.eval()
-    #Train Loss
-    counter = 0
-    train_accuracy_sum = 0.0
-    for i in range(0, 10000, batch_size):
-        x_train_batch = torch.FloatTensor( x_train[i:i+batch_size,:] )
-        y_train_batch = torch.LongTensor( y_train[i:i+batch_size] )
-        data, target = Variable(x_train_batch).cuda(), Variable(y_train_batch).cuda()
+	model.eval()
+	for batch_idx, (X_train_batch, Y_train_batch) in enumerate(trainloader):
+		X_train_batch,Y_train_batch= Variable(X_train_batch).cuda(), Variable(Y_train_batch).cuda()			
         output = model(data)
         prediction = output.data.max(1)[1]
         accuracy = ( float( prediction.eq(target.data).sum() ) /float(batch_size)  )*100.0
         counter += 1
         train_accuracy_sum = train_accuracy_sum + accuracy
-    train_accuracy_ave = train_accuracy_sum/float(counter)           
-        
-    #Test Loss
-    counter = 0
-    test_accuracy_sum = 0.0
-    for i in range(0, L_Y_test, batch_size):
-        x_test_batch = torch.FloatTensor( x_test[i:i+batch_size,:] )
-        y_test_batch = torch.LongTensor( y_test[i:i+batch_size] )
-        data, target = Variable(x_test_batch).cuda(), Variable(y_test_batch).cuda()
-        output = model(data)
-        prediction = output.data.max(1)[1]
-        accuracy = ( float( prediction.eq(target.data).sum() ) /float(batch_size)  )*100.0
-        counter += 1
-        test_accuracy_sum = test_accuracy_sum + accuracy
-    test_accuracy_ave = test_accuracy_sum/float(counter)    
-    time2 = time.time()
-    time_elapsed = time2 - time1
-    print(epoch, test_accuracy_ave, train_accuracy_ave, time_elapsed)  
-    #save model
-    torch.save(model.state_dict(), Path_Save)
-    
+    train_accuracy_ave = train_accuracy_sum/float(counter)
 
+	print ('Epoch [{}/{}], Loss: {:.4f}'.format(epoch+1, num_epochs, loss.item()))
 
+	   
+	# Test the model
+	with torch.no_grad():
+		model.eval()
+		total, correct = 0, 0
+		for batch_idx, (X_test_batch, Y_test_batch) in enumerate(testloader):
+			X_test_batch, Y_test_batch= Variable(X_test_batch).cuda(), Variable(Y_test_batch).cuda()
+			outputs = model(X_test_batch)
+			_, predicted = torch.max(outputs.data, 1)
+			total += Y_test_batch.size(0)
+			correct += (predicted == Y_test_batch).sum().item()
 
+		print('Test Accuracy of the model on the 10000 test images: {} %'.format(100 * correct / total))
 
+# Save the model checkpoint
+torch.save(model.state_dict(), Path_Save)
