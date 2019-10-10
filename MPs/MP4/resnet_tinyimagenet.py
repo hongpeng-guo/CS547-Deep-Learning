@@ -69,7 +69,7 @@ val_dataset = datasets.ImageFolder(val_dir, transform=transforms.ToTensor())
 val_loader = torch.utils.data.DataLoader(val_dataset, batch_size=batch_size, shuffle=False, num_workers=8)
 
 
-device = 'cuda' if torch.cuda.is_available() else 'cpu'
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 # YOUR CODE GOES HERE
 class BasicBlock(nn.Module):

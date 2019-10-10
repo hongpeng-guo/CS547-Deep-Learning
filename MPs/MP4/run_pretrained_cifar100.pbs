@@ -7,7 +7,6 @@
 #PBS -m bea
 #PBS -M hg5@illinois.edu
 cd /u/training/tra200/CS547-Deep-Learning/MPs/MP4
-. /opt/modules/default/init/bash 
-module load bwpy
-module load bwpy-mpi
+. /opt/modules/default/init/bash  
+module load python/2.0.1
 aprun -n 1 -N 1 python pretrained_cifar100.py

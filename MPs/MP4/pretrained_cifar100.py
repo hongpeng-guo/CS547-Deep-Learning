@@ -40,7 +40,7 @@ testset = torchvision.datasets.CIFAR100(root='./', train=False, download=True, t
 testloader = torch.utils.data.DataLoader(testset, batch_size=batch_size, shuffle=False, num_workers=8)
 
 
-device = 'cuda' if torch.cuda.is_available() else 'cpu'
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
