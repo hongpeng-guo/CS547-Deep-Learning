@@ -178,8 +178,8 @@ optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
 for epoch in range(num_epochs):
 	# Train the model
 	model.train()
-	total_step = len(trainloader)
-	for batch_idx, (X_train_batch, Y_train_batch) in enumerate(trainloader):
+	total_step = len(train_loader)
+	for batch_idx, (X_train_batch, Y_train_batch) in enumerate(train_loader):
 		X_train_batch,Y_train_batch = X_train_batch.to(device),Y_train_batch.to(device)
 		
 		# Forward pass
@@ -204,7 +204,7 @@ for epoch in range(num_epochs):
 	with torch.no_grad():
 		model.eval()
 		total, correct = 0, 0
-		for batch_idx, (X_test_batch, Y_test_batch) in enumerate(testloader):
+		for batch_idx, (X_test_batch, Y_test_batch) in enumerate(val_loader):
 			X_test_batch, Y_test_batch= X_test_batch.to(device),Y_test_batch.to(device)
 			outputs = model(X_test_batch)
 			_, predicted = torch.max(outputs.data, 1)
