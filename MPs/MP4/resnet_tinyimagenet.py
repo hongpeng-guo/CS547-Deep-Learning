@@ -114,7 +114,7 @@ class ResNet(nn.Module):
 		super(ResNet, self).__init__()
 		
 		self.curt_in_channels = 32
-		self.curt_in_size = 224
+		self.curt_in_size = 64
 
 		self.conv1 = nn.Sequential(
 			nn.Conv2d(3, 32, kernel_size=3, stride=1, padding=1, bias=False),
@@ -169,7 +169,7 @@ class ResNet(nn.Module):
 
 
 # Change to your ResNet
-model = ResNet(BasicBlock, [2, 4, 4, 2], 100).to(device)
+model = ResNet(BasicBlock, [2, 4, 4, 2], 200).to(device)
 # Loss and optimizer
 criterion = nn.CrossEntropyLoss()
 # optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
