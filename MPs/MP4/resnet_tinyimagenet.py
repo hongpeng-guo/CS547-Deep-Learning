@@ -7,7 +7,7 @@ import torchvision.datasets as datasets
 import os
 
 
-num_epochs = 20
+num_epochs = 40
 batch_size = 128
 learning_rate = 0.001
 
@@ -120,7 +120,7 @@ class ResNet(nn.Module):
 			nn.Conv2d(3, 32, kernel_size=3, stride=1, padding=1, bias=False),
 			nn.BatchNorm2d(32),
 			nn.ReLU(inplace=True),
-			nn.Dropout(p=0.5)
+			nn.Dropout(p=0.1)
 		)
 
 		self.conv2_x = self._add_layers(32, num_blocks[0])
@@ -137,12 +137,12 @@ class ResNet(nn.Module):
 	
 	def forward(self, x):
 		x = self.dropout(self.relu(self.conv1(x)))
-
+		print (x.shape)
 		x = self.conv2_x(x)
 		x = self.conv3_x(x)
 		x = self.conv4_x(x)
 		x = self.conv5_x(x)
-
+		print (x.shape)
 		x = self.maxpool(x)
 
 		x = x.view(x.shape[0], -1)
