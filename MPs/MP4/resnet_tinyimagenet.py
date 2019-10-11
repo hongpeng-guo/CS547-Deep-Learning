@@ -114,7 +114,7 @@ class ResNet(nn.Module):
 		super(ResNet, self).__init__()
 		
 		self.curt_in_channels = 32
-		self.curt_in_size = 32
+		self.curt_in_size = 224
 
 		self.conv1 = nn.Sequential(
 			nn.Conv2d(3, 32, kernel_size=3, stride=1, padding=1, bias=False),
@@ -163,6 +163,7 @@ class ResNet(nn.Module):
 
 		for _ in range(1, num_blocks):
 			layers.append(BasicBlock(self.curt_in_channels, out_channels))
+			layers.append(nn.Dropout(p=0.1))
 		
 		return nn.Sequential(*layers)
 

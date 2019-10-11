@@ -9,7 +9,7 @@ import time
 
 
 # We provide the code for loading CIFAR100 data
-num_epochs = 20
+num_epochs = 40
 batch_size = 128
 learning_rate = 0.001
 
@@ -88,7 +88,7 @@ class ResNet(nn.Module):
 			nn.Conv2d(3, 32, kernel_size=3, stride=1, padding=1, bias=False),
 			nn.BatchNorm2d(32),
 			nn.ReLU(inplace=True),
-			nn.Dropout(p=0.5)
+			nn.Dropout(p=0.1)
 		)
 
 		self.conv2_x = self._add_layers(32, num_blocks[0])
@@ -131,6 +131,7 @@ class ResNet(nn.Module):
 
 		for _ in range(1, num_blocks):
 			layers.append(BasicBlock(self.curt_in_channels, out_channels))
+			layers.append(nn.Dropout(p=0.1))
 		
 		return nn.Sequential(*layers)
 

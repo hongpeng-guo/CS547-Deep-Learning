@@ -15,7 +15,7 @@ model_urls = {
 }
 
 
-num_epochs = 20
+num_epochs = 40
 batch_size = 128
 learning_rate = 0.001
 
