@@ -17,7 +17,7 @@ model_urls = {
 
 num_epochs = 20
 batch_size = 128
-learning_rate = 0.001
+learning_rate = 0.01
 
 transform_train = transforms.Compose([
 	transforms.Resize((224, 224)),
@@ -60,10 +60,11 @@ model = model.to(device)
 
 criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
-
-
+scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=20, gamma=0.1)
 
 for epoch in range(num_epochs):
+	# Count scheduler step
+	scheduler.step()
 	# Train the model
 	model.train()
 	total_step = len(trainloader)
@@ -99,7 +100,7 @@ for epoch in range(num_epochs):
 			total += Y_test_batch.size(0)
 			correct += (predicted == Y_test_batch).sum().item()
 
-		print('Test Accuracy of the model on the 10000 test images: {} %'.format(100 * correct / total))
+	print('Test Accuracy of the model: {} %'.format(100 * correct / total))
 
 # Save the model checkpoint
 torch.save(model.state_dict(), 'model.ckpt')

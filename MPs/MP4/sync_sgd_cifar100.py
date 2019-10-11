@@ -63,10 +63,10 @@ transform_test = transforms.Compose([
 
 
 trainset = torchvision.datasets.CIFAR100(root='./', train=True, download=True, transform=transform_train)
-trainloader = torch.utils.data.DataLoader(trainset, batch_size=batch_size, shuffle=True, num_workers=8)
+trainloader = torch.utils.data.DataLoader(trainset, batch_size=batch_size, shuffle=True, num_workers=0)
 
 testset = torchvision.datasets.CIFAR100(root='./', train=False, download=True, transform=transform_test)
-testloader = torch.utils.data.DataLoader(testset, batch_size=batch_size, shuffle=False, num_workers=8)
+testloader = torch.utils.data.DataLoader(testset, batch_size=batch_size, shuffle=False, num_workers=0)
 
 
 
@@ -177,8 +177,6 @@ for param in model.parameters():
 	tensor0 = param.data
 	dist.all_reduce(tensor0, op=dist.reduce_op.SUM)
 	param.data = tensor0/np.sqrt(np.float(num_nodes))
-
-
 model.cuda()
 
 Path_Save = os.path.dirname(os.path.realpath(__file__))
@@ -207,19 +205,6 @@ for epoch in range(num_epochs):
 		optimizer.step()
 
 	print ('Epoch [{}/{}], Loss: {:.4f}'.format(epoch+1, num_epochs, loss.item()))
-
-	model.eval()
-	for batch_idx, (X_train_batch, Y_train_batch) in enumerate(trainloader):
-		data, target = Variable(X_train_batch).cuda(), Variable(Y_train_batch).cuda()			
-		output = model(data)
-		prediction = output.data.max(1)[1]
-		accuracy = ( float( prediction.eq(target.data).sum() ) /float(batch_size)  )*100.0
-		counter += 1
-		train_accuracy_sum = train_accuracy_sum + accuracy
-	train_accuracy_ave = train_accuracy_sum/float(counter)
-
-	print ('Epoch [{}/{}], Loss: {:.4f}'.format(epoch+1, num_epochs, loss.item()))
-
 	   
 	# Test the model
 	with torch.no_grad():
@@ -232,7 +217,7 @@ for epoch in range(num_epochs):
 			total += target.size(0)
 			correct += (predicted == target).sum().item()
 
-	print('Test Accuracy of the model on the 10000 test images: {} %'.format(100 * correct / total))
+	print('Test Accuracy of the model: {} %'.format(100 * correct / total))
 
 # Save the model checkpoint
 torch.save(model.state_dict(), Path_Save)
