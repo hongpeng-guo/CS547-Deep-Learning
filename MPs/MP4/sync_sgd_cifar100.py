@@ -195,27 +195,14 @@ criterion = nn.CrossEntropyLoss()
 optimizer = optim.RMSprop(model.parameters(), learning_rate=learning_rate)
 
 
-I_permutation = np.random.permutation(L_Y_train)
-x_train =  x_train[I_permutation,:]
-y_train =  y_train[I_permutation] 
-
-
-L_Y_test = round(0.1*L_Y_train)
-x_test = x_train[0:L_Y_test,:]
-y_test = y_train[0:L_Y_test]
-
-x_train = x_train[L_Y_test+1:,:]
-y_train = y_train[L_Y_test+1:]
-L_Y_train = len(y_train)
-
 for epoch in range(num_epochs):
 	# Train the model
 	model.train()
 	for batch_idx, (X_train_batch, Y_train_batch) in enumerate(trainloader):
-		X_train_batch,Y_train_batch= Variable(X_train_batch).cuda(), Variable(Y_train_batch).cuda()	
+		data, target = Variable(X_train_batch).cuda(), Variable(Y_train_batch).cuda()	
 		# Forward pass
-		outputs = model(X_train_batch)
-		loss = criterion(outputs, Y_train_batch)
+		output = model(data)
+		loss = criterion(output, target)
 		# Backward and optimize
 		optimizer.zero_grad()
 		loss.backward()
@@ -228,17 +215,17 @@ for epoch in range(num_epochs):
 			param.grad.data = tensor0.cuda() 
 		optimizer.step()
 
-		print ('Epoch [{}/{}], Loss: {:.4f}'.format(epoch+1, num_epochs, loss.item()))
+	print ('Epoch [{}/{}], Loss: {:.4f}'.format(epoch+1, num_epochs, loss.item()))
 
 	model.eval()
 	for batch_idx, (X_train_batch, Y_train_batch) in enumerate(trainloader):
-		X_train_batch,Y_train_batch= Variable(X_train_batch).cuda(), Variable(Y_train_batch).cuda()			
-        output = model(data)
-        prediction = output.data.max(1)[1]
-        accuracy = ( float( prediction.eq(target.data).sum() ) /float(batch_size)  )*100.0
-        counter += 1
-        train_accuracy_sum = train_accuracy_sum + accuracy
-    train_accuracy_ave = train_accuracy_sum/float(counter)
+		data, target = Variable(X_train_batch).cuda(), Variable(Y_train_batch).cuda()			
+		output = model(data)
+		prediction = output.data.max(1)[1]
+		accuracy = ( float( prediction.eq(target.data).sum() ) /float(batch_size)  )*100.0
+		counter += 1
+		train_accuracy_sum = train_accuracy_sum + accuracy
+	train_accuracy_ave = train_accuracy_sum/float(counter)
 
 	print ('Epoch [{}/{}], Loss: {:.4f}'.format(epoch+1, num_epochs, loss.item()))
 
@@ -248,13 +235,13 @@ for epoch in range(num_epochs):
 		model.eval()
 		total, correct = 0, 0
 		for batch_idx, (X_test_batch, Y_test_batch) in enumerate(testloader):
-			X_test_batch, Y_test_batch= Variable(X_test_batch).cuda(), Variable(Y_test_batch).cuda()
-			outputs = model(X_test_batch)
-			_, predicted = torch.max(outputs.data, 1)
-			total += Y_test_batch.size(0)
-			correct += (predicted == Y_test_batch).sum().item()
+			data, target = Variable(X_test_batch).cuda(), Variable(Y_test_batch).cuda()
+			output = model(data)
+			_, predicted = torch.max(output.data, 1)
+			total += target.size(0)
+			correct += (predicted == target).sum().item()
 
-		print('Test Accuracy of the model on the 10000 test images: {} %'.format(100 * correct / total))
+	print('Test Accuracy of the model on the 10000 test images: {} %'.format(100 * correct / total))
 
 # Save the model checkpoint
 torch.save(model.state_dict(), Path_Save)
