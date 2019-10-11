@@ -137,16 +137,12 @@ class ResNet(nn.Module):
 	
 	def forward(self, x):
 		x = self.dropout(self.relu(self.conv1(x)))
-		print (x.shape)
 		x = self.conv2_x(x)
 		x = self.conv3_x(x)
 		x = self.conv4_x(x)
 		x = self.conv5_x(x)
-		print (x.shape)
 		x = self.maxpool(x)
-		print (x.shape)
 		x = x.view(x.shape[0], -1)
-		print (x.shape)
 		x = self.fc(x)
 
 		return x
@@ -164,7 +160,7 @@ class ResNet(nn.Module):
 
 		for _ in range(1, num_blocks):
 			layers.append(BasicBlock(self.curt_in_channels, out_channels))
-			layers.append(nn.Dropout(p=0.1))
+			layers.append(nn.Dropout(p=0.2))
 		
 		return nn.Sequential(*layers)
 

@@ -53,8 +53,8 @@ def resnet18(pretrained=True):
 	return model
 
 model = resnet18(pretrained=True)
-for param in model.parameters():
-	param.requires_grad = False
+# for param in model.parameters():
+# 	param.requires_grad = False
 model.fc = nn.Linear(model.fc.in_features, 100)
 model = model.to(device)
 

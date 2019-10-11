@@ -170,7 +170,7 @@ class ResNet(nn.Module):
 
 model = ResNet(BasicBlock, [2, 4, 4, 2], 100)
 criterion = nn.CrossEntropyLoss()
-optimizer = torch.optim.Adam(model.parameters(), learning_rate=learning_rate)
+optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
 
 # Make sure that all nodes have the same model
 for param in model.parameters():
@@ -184,15 +184,6 @@ model.cuda()
 Path_Save = os.path.dirname(os.path.realpath(__file__))
 #torch.save(model.state_dict(), Path_Save)
 #model.load_state_dict(torch.load(Path_Save))
-
-
-learning_rate = 0.001
-batch_size = 100
-num_epochs = 1000
-
-
-criterion = nn.CrossEntropyLoss()
-optimizer = optim.RMSprop(model.parameters(), learning_rate=learning_rate)
 
 
 for epoch in range(num_epochs):

@@ -131,7 +131,7 @@ class ResNet(nn.Module):
 
 		for _ in range(1, num_blocks):
 			layers.append(BasicBlock(self.curt_in_channels, out_channels))
-			layers.append(nn.Dropout(p=0.1))
+			layers.append(nn.Dropout(p=0.2))
 		
 		return nn.Sequential(*layers)
 
