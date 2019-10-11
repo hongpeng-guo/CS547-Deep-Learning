@@ -120,7 +120,7 @@ class ResNet(nn.Module):
 			nn.Conv2d(3, 32, kernel_size=3, stride=1, padding=1, bias=False),
 			nn.BatchNorm2d(32),
 			nn.ReLU(inplace=True),
-			nn.Dropout(p=0.1)
+			nn.Dropout(p=0.5)
 		)
 
 		self.conv2_x = self._add_layers(32, num_blocks[0])
@@ -144,8 +144,9 @@ class ResNet(nn.Module):
 		x = self.conv5_x(x)
 		print (x.shape)
 		x = self.maxpool(x)
-
+		print (x.shape)
 		x = x.view(x.shape[0], -1)
+		print (x.shape)
 		x = self.fc(x)
 
 		return x
