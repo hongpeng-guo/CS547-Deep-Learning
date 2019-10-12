@@ -193,7 +193,7 @@ def train():
 		outputs = model(images)
 		loss = criterion(outputs, labels)
 		loss.backward()
-		for param in net.parameters():
+		for param in model.parameters():
 			tensor0 = param.grad.data.cpu()
 			dist.all_reduce(tensor0, op=dist.reduce_op.SUM)
 			tensor0 /= float(num_nodes)
