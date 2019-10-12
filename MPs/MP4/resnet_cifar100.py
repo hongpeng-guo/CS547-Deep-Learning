@@ -9,7 +9,7 @@ import time
 
 
 # We provide the code for loading CIFAR100 data
-num_epochs = 40
+num_epochs = 60
 batch_size = 128
 learning_rate = 0.01
 
