@@ -105,11 +105,14 @@ class ResNet(nn.Module):
 	
 	def forward(self, x):
 		x = self.conv1_x(x)
+
 		x = self.conv2_x(x)
 		x = self.conv3_x(x)
 		x = self.conv4_x(x)
 		x = self.conv5_x(x)
+
 		x = self.maxpool(x)
+
 		x = x.view(x.shape[0], -1)
 		x = self.fc(x)
 
@@ -142,8 +145,6 @@ optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate, weight_decay=
 scheduler = torch.optim.lr_scheduler.StepLR(optimizer, 20 , gamma=0.1)
 
 for epoch in range(num_epochs):
-	# Count scheduler step
-	scheduler.step()
 	# Train the model
 	model.train()
 	for batch_idx, (X_train_batch, Y_train_batch) in enumerate(trainloader):
@@ -179,6 +180,9 @@ for epoch in range(num_epochs):
 			correct += (predicted == Y_test_batch).sum().item()
 
 	print('Test Accuracy of the model: {} %'.format(100 * correct / total))
+
+	# Count scheduler step
+	scheduler.step()
 
 # Save the model checkpoint
 torch.save(model.state_dict(), 'model.ckpt')
