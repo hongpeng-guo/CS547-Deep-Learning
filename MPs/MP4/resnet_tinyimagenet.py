@@ -116,7 +116,7 @@ class ResNet(nn.Module):
 		self.curt_in_channels = 32
 		self.curt_in_size = 64
 
-		self.conv1 = nn.Sequential(
+		self.conv1_x = nn.Sequential(
 			nn.Conv2d(3, 32, kernel_size=3, stride=1, padding=1, bias=False),
 			nn.BatchNorm2d(32),
 			nn.ReLU(inplace=True),
@@ -136,7 +136,7 @@ class ResNet(nn.Module):
 		self.fc = nn.Linear(256 * (self.curt_in_size**2), num_classes)
 	
 	def forward(self, x):
-		x = self.dropout(self.relu(self.conv1(x)))
+		x = self.conv1_x(x)
 		x = self.conv2_x(x)
 		x = self.conv3_x(x)
 		x = self.conv4_x(x)
