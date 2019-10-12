@@ -17,7 +17,7 @@ model_urls = {
 
 num_epochs = 20
 batch_size = 128
-learning_rate = 0.01
+learning_rate = 0.001
 
 transform_train = transforms.Compose([
 	transforms.Resize((224, 224)),
