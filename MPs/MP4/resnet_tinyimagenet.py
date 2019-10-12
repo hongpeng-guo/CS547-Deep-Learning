@@ -130,8 +130,8 @@ class ResNet(nn.Module):
 
 		self.dropout = nn.Dropout(p=0.5)
 		self.relu = nn.ReLU(inplace=True)
-		self.maxpool = nn.MaxPool2d(4, stride=1)
-		self.curt_in_size = self.curt_in_size - 3
+		self.maxpool = nn.MaxPool2d(4, stride=4)
+		self.curt_in_size = self.curt_in_size // 4
 
 		self.fc = nn.Linear(256 * (self.curt_in_size**2), num_classes)
 	
@@ -160,7 +160,7 @@ class ResNet(nn.Module):
 
 		for _ in range(1, num_blocks):
 			layers.append(BasicBlock(self.curt_in_channels, out_channels))
-			layers.append(nn.Dropout(p=0.2))
+		layers.append(nn.Dropout(p=0.2))
 		
 		return nn.Sequential(*layers)
 

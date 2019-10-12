@@ -11,7 +11,7 @@ import time
 # We provide the code for loading CIFAR100 data
 num_epochs = 60
 batch_size = 128
-learning_rate = 0.01
+learning_rate = 0.001
 
 # torch.manual_seed(0)
 transform_train = transforms.Compose([
@@ -98,8 +98,8 @@ class ResNet(nn.Module):
 
 		self.dropout = nn.Dropout(p=0.5)
 		self.relu = nn.ReLU(inplace=True)
-		self.maxpool = nn.MaxPool2d(4, stride=1)
-		self.curt_in_size = self.curt_in_size - 3
+		self.maxpool = nn.MaxPool2d(4, stride=4)
+		self.curt_in_size = self.curt_in_size // 4
 
 		self.fc = nn.Linear(256 * (self.curt_in_size**2), num_classes)
 	
@@ -131,7 +131,8 @@ class ResNet(nn.Module):
 
 		for _ in range(1, num_blocks):
 			layers.append(BasicBlock(self.curt_in_channels, out_channels))
-			layers.append(nn.Dropout(p=0.2))
+
+		layers.append(nn.Dropout(p=0.5))
 		
 		return nn.Sequential(*layers)
 
@@ -140,8 +141,8 @@ class ResNet(nn.Module):
 model = ResNet(BasicBlock, [2, 4, 4, 2], 100).to(device)
 # Loss and optimizer
 criterion = nn.CrossEntropyLoss()
-optimizer = torch.optim.SGD(model.parameters(), lr=0.01, momentum=0.9, weight_decay=5e-4)
-scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer, milestones=[20, 60, 100], gamma=0.1)
+optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate, weight_decay=5e-4)
+scheduler = torch.optim.lr_scheduler.StepLR(optimizer, 20 , gamma=0.1)
 
 for epoch in range(num_epochs):
 	# Count scheduler step
@@ -158,12 +159,12 @@ for epoch in range(num_epochs):
 		# Backward and optimize
 		optimizer.zero_grad()
 		loss.backward()
-		# for group in optimizer.param_groups:
-		# 	for p in group['params']:
-		# 		state = optimizer.state[p]
-		# 		if 'step' in state.keys():
-		# 			if(state['step']>=1024):
-		# 				state['step'] = 1000
+		for group in optimizer.param_groups:
+			for p in group['params']:
+				state = optimizer.state[p]
+				if 'step' in state.keys():
+					if(state['step']>=1024):
+						state['step'] = 1000
 		optimizer.step()
 
 	print ('Epoch [{}/{}], Loss: {:.4f}'.format(epoch+1, num_epochs, loss.item()))
