@@ -140,7 +140,7 @@ class ResNet(nn.Module):
 model = ResNet(BasicBlock, [2, 4, 4, 2], 100).to(device)
 # Loss and optimizer
 criterion = nn.CrossEntropyLoss()
-optimizer = torch.optim.SGD(net.parameters(), lr=0.01, momentum=0.9, weight_decay=5e-4)
+optimizer = torch.optim.SGD(model.parameters(), lr=0.01, momentum=0.9, weight_decay=5e-4)
 scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer, milestones=[20, 60, 100], gamma=0.1)
 
 for epoch in range(num_epochs):
