@@ -183,42 +183,49 @@ Path_Save = os.path.dirname(os.path.realpath(__file__))
 #torch.save(model.state_dict(), Path_Save)
 #model.load_state_dict(torch.load(Path_Save))
 
-
-for epoch in range(num_epochs):
-	# Train the model
+def train():
 	model.train()
-	for batch_idx, (X_train_batch, Y_train_batch) in enumerate(trainloader):
-		data, target = Variable(X_train_batch).cuda(), Variable(Y_train_batch).cuda()	
-		# Forward pass
-		output = model(data)
-		loss = criterion(output, target)
-		# Backward and optimize
+	for batch_idx, (images, labels) in enumerate(trainloader):
+		images = Variable(images).cuda()
+		labels = Variable(labels).cuda()
+
 		optimizer.zero_grad()
+		outputs = net(images)
+		loss = criterion(outputs, labels)
 		loss.backward()
-		
-		for param in model.parameters():
-			#print(param.grad.data)
+		for param in net.parameters():
 			tensor0 = param.grad.data.cpu()
 			dist.all_reduce(tensor0, op=dist.reduce_op.SUM)
 			tensor0 /= float(num_nodes)
-			param.grad.data = tensor0.cuda() 
+			param.grad.data = tensor0.cuda()
 		optimizer.step()
 
-	print ('Epoch [{}/{}], Loss: {:.4f}'.format(epoch+1, num_epochs, loss.data[0]))
-	   
-	# Test the model
-	with torch.no_grad():
-		model.eval()
-		total, correct = 0, 0
-		for batch_idx, (X_test_batch, Y_test_batch) in enumerate(testloader):
-			data, target = Variable(X_test_batch).cuda(), Variable(Y_test_batch).cuda()
-			output = model(data)
-			_, predicted = output.max[1]
-			cor = predicted.eq(target).sum()
-			correct += cor.data[0]
-			total += len(testloader.dataset)
+def eval(dataloader):
+	model.eval()
+	test_loss = 0.0
+	correct = 0.0
+	for batch_idx, (images, labels) in enumerate(dataloader):
+		images = Variable(images).cuda()
+		labels = Variable(labels).cuda()
 
-	print('Test Accuracy of the model: {} %'.format(100 * correct / total))
+		outputs = net(images) # 100x100
+		loss = criterion(outputs, labels)
+		test_loss += loss.data[0]
+		_, preds = outputs.max(1)
+		cor = preds.eq(labels).sum()
+		correct += cor.data[0]
+	return test_loss / len(dataloader.dataset), correct / len(dataloader.dataset)
+
+if __name__=='__main__':
+	num_epochs = 500
+	for epoch in range(num_epochs):
+		train()
+		test_loss,test_acc = eval(testloader)
+		train_loss,train_acc  =eval(trainloader)
+		scheduler.step(epoch)
+		print('%d\t%d\t%f\t%f\t%f\t%f' % (rank,epoch,test_loss,test_acc,train_loss,train_acc))
+		if test_acc > 0.65:
+			break
 
 # Save the model checkpoint
 torch.save(model.state_dict(), Path_Save)
