@@ -190,7 +190,7 @@ def train():
 		labels = Variable(labels).cuda()
 
 		optimizer.zero_grad()
-		outputs = net(images)
+		outputs = model(images)
 		loss = criterion(outputs, labels)
 		loss.backward()
 		for param in net.parameters():
@@ -208,7 +208,7 @@ def eval(dataloader):
 		images = Variable(images).cuda()
 		labels = Variable(labels).cuda()
 
-		outputs = net(images) # 100x100
+		outputs = model(images) # 100x100
 		loss = criterion(outputs, labels)
 		test_loss += loss.data[0]
 		_, preds = outputs.max(1)
