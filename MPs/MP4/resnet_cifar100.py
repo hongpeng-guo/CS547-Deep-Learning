@@ -140,8 +140,8 @@ class ResNet(nn.Module):
 model = ResNet(BasicBlock, [2, 4, 4, 2], 100).to(device)
 # Loss and optimizer
 criterion = nn.CrossEntropyLoss()
-optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
-scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=20, gamma=0.1)
+optimizer = optim.SGD(net.parameters(), lr=0.01, momentum=0.9, weight_decay=5e-4)
+scheduler = optim.lr_scheduler.MultiStepLR(optimizer, milestones=[20, 60, 100], gamma=0.1)
 
 for epoch in range(num_epochs):
 	# Count scheduler step
@@ -158,12 +158,12 @@ for epoch in range(num_epochs):
 		# Backward and optimize
 		optimizer.zero_grad()
 		loss.backward()
-		for group in optimizer.param_groups:
-			for p in group['params']:
-				state = optimizer.state[p]
-				if 'step' in state.keys():
-					if(state['step']>=1024):
-						state['step'] = 1000
+		# for group in optimizer.param_groups:
+		# 	for p in group['params']:
+		# 		state = optimizer.state[p]
+		# 		if 'step' in state.keys():
+		# 			if(state['step']>=1024):
+		# 				state['step'] = 1000
 		optimizer.step()
 
 	print ('Epoch [{}/{}], Loss: {:.4f}'.format(epoch+1, num_epochs, loss.item()))
