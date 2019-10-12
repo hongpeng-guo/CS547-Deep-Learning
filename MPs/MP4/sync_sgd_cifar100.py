@@ -44,9 +44,9 @@ dtype = torch.FloatTensor
 # Your code start here 
 
 # We provide the code for loading CIFAR100 data
-num_epochs = 20
+num_epochs = 500
 batch_size = 128
-learning_rate = 0.001
+learning_rate = 0.01
 
 # torch.manual_seed(0)
 transform_train = transforms.Compose([
@@ -217,7 +217,6 @@ def eval(dataloader):
 	return test_loss / len(dataloader.dataset), correct / len(dataloader.dataset)
 
 if __name__=='__main__':
-	num_epochs = 500
 	for epoch in range(num_epochs):
 		train()
 		test_loss,test_acc = eval(testloader)

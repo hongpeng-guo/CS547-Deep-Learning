@@ -11,7 +11,7 @@ import time
 # We provide the code for loading CIFAR100 data
 num_epochs = 40
 batch_size = 128
-learning_rate = 0.001
+learning_rate = 0.01
 
 # torch.manual_seed(0)
 transform_train = transforms.Compose([
