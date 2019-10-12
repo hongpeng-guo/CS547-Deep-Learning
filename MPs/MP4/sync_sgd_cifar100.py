@@ -204,7 +204,7 @@ for epoch in range(num_epochs):
 			param.grad.data = tensor0.cuda() 
 		optimizer.step()
 
-	print ('Epoch [{}/{}], Loss: {:.4f}'.format(epoch+1, num_epochs, loss.item()))
+	print ('Epoch [{}/{}], Loss: {:.4f}'.format(epoch+1, num_epochs, loss.data[0]))
 	   
 	# Test the model
 	with torch.no_grad():
@@ -213,9 +213,10 @@ for epoch in range(num_epochs):
 		for batch_idx, (X_test_batch, Y_test_batch) in enumerate(testloader):
 			data, target = Variable(X_test_batch).cuda(), Variable(Y_test_batch).cuda()
 			output = model(data)
-			_, predicted = torch.max(output.data, 1)
-			total += target.size(0)
-			correct += (predicted == target).sum().item()
+			_, predicted = output.max[1]
+			cor = predicted.eq(target).sum()
+			correct += cor.data[0]
+			total += len(testloader.dataset)
 
 	print('Test Accuracy of the model: {} %'.format(100 * correct / total))
 
