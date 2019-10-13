@@ -196,6 +196,12 @@ def train():
 			dist.all_reduce(tensor0, op=dist.reduce_op.SUM)
 			tensor0 /= float(num_nodes)
 			param.grad.data = tensor0.cuda()
+		for group in optimizer.param_groups:
+			for p in group['params']:
+				state = optimizer.state[p]
+				if 'step' in state.keys():
+					if(state['step']>=1024):
+						state['step'] = 1000
 		optimizer.step()
 
 def eval(dataloader):
