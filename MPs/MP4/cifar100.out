@@ -1,0 +1,132 @@
+----------------------------------------
+Begin Torque Prologue on nid25433
+at Sat Oct 12 13:16:17 CDT 2019
+Job Id:			10543192.bw
+Username:		tra200
+Group:			TRAIN_bayw
+Job name:		resnet_cifar100
+Requested resources:	nodes=01:ppn=16:xk,walltime=02:00:00,neednodes=01:ppn=16:xk
+Queue:			normal
+Account:		bayw
+End Torque Prologue:  0.103 elapsed
+----------------------------------------
+
+
+
+
+Files already downloaded and verified
+Files already downloaded and verified
+Epoch [1/60], Loss: 3.8898
+Test Accuracy of the model: 5.0 %
+Epoch [2/60], Loss: 3.7204
+Test Accuracy of the model: 10.09 %
+Epoch [3/60], Loss: 3.5437
+Test Accuracy of the model: 16.86 %
+Epoch [4/60], Loss: 3.1919
+Test Accuracy of the model: 21.38 %
+Epoch [5/60], Loss: 2.7524
+Test Accuracy of the model: 28.44 %
+Epoch [6/60], Loss: 2.8456
+Test Accuracy of the model: 30.06 %
+Epoch [7/60], Loss: 2.8071
+Test Accuracy of the model: 32.9 %
+Epoch [8/60], Loss: 2.5909
+Test Accuracy of the model: 35.49 %
+Epoch [9/60], Loss: 2.7641
+Test Accuracy of the model: 35.07 %
+Epoch [10/60], Loss: 2.0652
+Test Accuracy of the model: 37.79 %
+Epoch [11/60], Loss: 2.4083
+Test Accuracy of the model: 40.33 %
+Epoch [12/60], Loss: 2.3047
+Test Accuracy of the model: 42.9 %
+Epoch [13/60], Loss: 2.4091
+Test Accuracy of the model: 44.3 %
+Epoch [14/60], Loss: 1.8285
+Test Accuracy of the model: 48.43 %
+Epoch [15/60], Loss: 2.0218
+Test Accuracy of the model: 46.96 %
+Epoch [16/60], Loss: 2.2450
+Test Accuracy of the model: 46.41 %
+Epoch [17/60], Loss: 1.5577
+Test Accuracy of the model: 44.29 %
+Epoch [18/60], Loss: 1.6077
+Test Accuracy of the model: 48.25 %
+Epoch [19/60], Loss: 1.7817
+Test Accuracy of the model: 50.58 %
+Epoch [20/60], Loss: 1.3673
+Test Accuracy of the model: 50.24 %
+Epoch [21/60], Loss: 1.8378
+Test Accuracy of the model: 56.85 %
+Epoch [22/60], Loss: 1.5909
+Test Accuracy of the model: 57.28 %
+Epoch [23/60], Loss: 1.4003
+Test Accuracy of the model: 57.47 %
+Epoch [24/60], Loss: 1.5518
+Test Accuracy of the model: 57.74 %
+Epoch [25/60], Loss: 1.5783
+Test Accuracy of the model: 58.18 %
+Epoch [26/60], Loss: 1.4912
+Test Accuracy of the model: 58.73 %
+Epoch [27/60], Loss: 1.4621
+Test Accuracy of the model: 58.74 %
+Epoch [28/60], Loss: 1.2239
+Test Accuracy of the model: 58.25 %
+Epoch [29/60], Loss: 1.5997
+Test Accuracy of the model: 58.54 %
+Epoch [30/60], Loss: 1.5517
+Test Accuracy of the model: 59.26 %
+Epoch [31/60], Loss: 1.1419
+Test Accuracy of the model: 59.32 %
+Epoch [32/60], Loss: 1.4558
+Test Accuracy of the model: 59.72 %
+Epoch [33/60], Loss: 1.3326
+Test Accuracy of the model: 59.74 %
+Epoch [34/60], Loss: 1.0897
+Test Accuracy of the model: 59.93 %
+Epoch [35/60], Loss: 1.1313
+Test Accuracy of the model: 59.98 %
+Epoch [36/60], Loss: 1.4392
+Test Accuracy of the model: 59.87 %
+Epoch [37/60], Loss: 1.0872
+Test Accuracy of the model: 60.19 %
+Epoch [38/60], Loss: 1.4820
+Test Accuracy of the model: 60.14 %
+Epoch [39/60], Loss: 1.3551
+Test Accuracy of the model: 60.54 %
+Epoch [40/60], Loss: 1.1336
+Test Accuracy of the model: 60.0 %
+Epoch [41/60], Loss: 0.9609
+Test Accuracy of the model: 60.32 %
+Epoch [42/60], Loss: 1.1921
+Test Accuracy of the model: 60.73 %
+Epoch [43/60], Loss: 1.2066
+Test Accuracy of the model: 60.71 %
+Epoch [44/60], Loss: 1.0321
+Test Accuracy of the model: 60.93 %
+Epoch [45/60], Loss: 1.1863
+Test Accuracy of the model: 61.09 %
+Epoch [46/60], Loss: 1.0396
+Test Accuracy of the model: 61.14 %
+Epoch [47/60], Loss: 1.0987
+Test Accuracy of the model: 60.96 %
+Epoch [48/60], Loss: 1.2655
+Test Accuracy of the model: 61.06 %
+Epoch [49/60], Loss: 1.0483
+Test Accuracy of the model: 60.88 %
+Epoch [50/60], Loss: 1.0005
+Test Accuracy of the model: 60.77 %
+Epoch [51/60], Loss: 1.2314
+Test Accuracy of the model: 60.83 %
+Epoch [52/60], Loss: 1.2265
+Test Accuracy of the model: 60.58 %
+Epoch [53/60], Loss: 1.0526
+Test Accuracy of the model: 61.07 %
+Epoch [54/60], Loss: 1.4265
+Test Accuracy of the model: 61.01 %
+Epoch [55/60], Loss: 1.0770
+Test Accuracy of the model: 61.04 %
+Epoch [56/60], Loss: 1.0491
+Test Accuracy of the model: 60.92 %
+Epoch [57/60], Loss: 0.8074
+Test Accuracy of the model: 60.82 %

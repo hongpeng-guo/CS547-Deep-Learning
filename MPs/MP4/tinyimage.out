@@ -1,0 +1,97 @@
+----------------------------------------
+Begin Torque Prologue on nid27634
+at Sun Oct 13 02:02:29 CDT 2019
+Job Id:			10543892.bw
+Username:		tra200
+Group:			TRAIN_bayw
+Job name:		resnet_tinyimagenet
+Requested resources:	nodes=01:ppn=16:xk,walltime=08:00:00,neednodes=01:ppn=16:xk
+Queue:			normal
+Account:		bayw
+End Torque Prologue:  0.104 elapsed
+----------------------------------------
+
+
+
+
+Epoch [1/40], Loss: 4.7079
+Test Accuracy of the model: 6.35 %
+Epoch [2/40], Loss: 3.5841
+Test Accuracy of the model: 15.84 %
+Epoch [3/40], Loss: 3.3930
+Test Accuracy of the model: 24.61 %
+Epoch [4/40], Loss: 2.8355
+Test Accuracy of the model: 28.13 %
+Epoch [5/40], Loss: 2.3573
+Test Accuracy of the model: 31.61 %
+Epoch [6/40], Loss: 2.8353
+Test Accuracy of the model: 36.5 %
+Epoch [7/40], Loss: 2.6389
+Test Accuracy of the model: 39.18 %
+Epoch [8/40], Loss: 2.2046
+Test Accuracy of the model: 38.45 %
+Epoch [9/40], Loss: 2.2188
+Test Accuracy of the model: 40.85 %
+Epoch [10/40], Loss: 2.4793
+Test Accuracy of the model: 41.56 %
+Epoch [11/40], Loss: 1.7071
+Test Accuracy of the model: 43.33 %
+Epoch [12/40], Loss: 1.8676
+Test Accuracy of the model: 44.07 %
+Epoch [13/40], Loss: 1.6999
+Test Accuracy of the model: 44.51 %
+Epoch [14/40], Loss: 2.3718
+Test Accuracy of the model: 44.81 %
+Epoch [15/40], Loss: 1.5901
+Test Accuracy of the model: 44.55 %
+Epoch [16/40], Loss: 1.9051
+Test Accuracy of the model: 46.4 %
+Epoch [17/40], Loss: 1.5242
+Test Accuracy of the model: 46.41 %
+Epoch [18/40], Loss: 1.7074
+Test Accuracy of the model: 46.8 %
+Epoch [19/40], Loss: 1.8974
+Test Accuracy of the model: 46.38 %
+Epoch [20/40], Loss: 1.7924
+Test Accuracy of the model: 46.61 %
+Epoch [21/40], Loss: 1.4938
+Test Accuracy of the model: 50.79 %
+Epoch [22/40], Loss: 0.8120
+Test Accuracy of the model: 50.55 %
+Epoch [23/40], Loss: 0.9165
+Test Accuracy of the model: 50.68 %
+Epoch [24/40], Loss: 1.0309
+Test Accuracy of the model: 50.7 %
+Epoch [25/40], Loss: 1.2125
+Test Accuracy of the model: 50.88 %
+Epoch [26/40], Loss: 0.7616
+Test Accuracy of the model: 50.84 %
+Epoch [27/40], Loss: 1.8143
+Test Accuracy of the model: 50.64 %
+Epoch [28/40], Loss: 1.4660
+Test Accuracy of the model: 51.19 %
+Epoch [29/40], Loss: 0.5999
+Test Accuracy of the model: 50.65 %
+Epoch [30/40], Loss: 1.3567
+Test Accuracy of the model: 50.51 %
+Epoch [31/40], Loss: 0.6024
+Test Accuracy of the model: 50.9 %
+Epoch [32/40], Loss: 0.9454
+Test Accuracy of the model: 50.66 %
+Epoch [33/40], Loss: 0.9712
+Test Accuracy of the model: 50.58 %
+Epoch [34/40], Loss: 0.9728
+Test Accuracy of the model: 50.84 %
+Epoch [35/40], Loss: 1.2116
+Test Accuracy of the model: 50.8 %
+Epoch [36/40], Loss: 1.0606
+Test Accuracy of the model: 50.48 %
+Epoch [37/40], Loss: 1.3087
+Test Accuracy of the model: 50.52 %
+Epoch [38/40], Loss: 0.9373
+Test Accuracy of the model: 50.53 %
+Epoch [39/40], Loss: 1.1323
+Test Accuracy of the model: 50.45 %
+Epoch [40/40], Loss: 0.7319
+Test Accuracy of the model: 50.48 %
+Application 81427639 resources: utime ~25357s, stime ~2750s, Rss ~1414768, inblocks ~17076121, outblocks ~110780

@@ -3,3 +3,4 @@
 !/.gitignore
 !/*.pbs
 /PyTorch_Distr.py
+!/*.out

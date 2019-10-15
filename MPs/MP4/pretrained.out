@@ -1,0 +1,50 @@
+----------------------------------------
+Begin Torque Prologue on nid25353
+at Sat Oct 12 14:24:19 CDT 2019
+Job Id:			10543232.bw
+Username:		tra200
+Group:			TRAIN_bayw
+Job name:		pretrained_cifar100
+Requested resources:	nodes=01:ppn=16:xk,walltime=02:00:00,neednodes=01:ppn=16:xk
+Queue:			normal
+Account:		bayw
+End Torque Prologue:  0.112 elapsed
+----------------------------------------
+
+
+
+
+Files already downloaded and verified
+Files already downloaded and verified
+Epoch [1/40],  Loss: 1.0229
+Test Accuracy of the model: 58.1 %
+Epoch [2/40],  Loss: 0.9561
+Test Accuracy of the model: 64.81 %
+Epoch [3/40],  Loss: 0.9090
+Test Accuracy of the model: 67.98 %
+Epoch [4/40],  Loss: 0.4749
+Test Accuracy of the model: 70.83 %
+Epoch [5/40],  Loss: 0.3837
+Test Accuracy of the model: 71.92 %
+Epoch [6/40],  Loss: 0.3327
+Test Accuracy of the model: 72.99 %
+Epoch [7/40],  Loss: 0.2961
+Test Accuracy of the model: 73.32 %
+Epoch [8/40],  Loss: 0.2469
+Test Accuracy of the model: 73.44 %
+Epoch [9/40],  Loss: 0.3892
+Test Accuracy of the model: 72.19 %
+Epoch [10/40],  Loss: 0.3397
+Test Accuracy of the model: 73.52 %
+Epoch [11/40],  Loss: 0.1959
+Test Accuracy of the model: 73.3 %
+Epoch [12/40],  Loss: 0.2522
+Test Accuracy of the model: 69.87 %
+Epoch [13/40],  Loss: 0.2854
+Test Accuracy of the model: 74.08 %
+Epoch [14/40],  Loss: 0.1152
+Test Accuracy of the model: 72.63 %
+Epoch [15/40],  Loss: 0.1270
+Test Accuracy of the model: 73.62 %
+Epoch [16/40],  Loss: 0.1217
+Test Accuracy of the model: 72.97 %
