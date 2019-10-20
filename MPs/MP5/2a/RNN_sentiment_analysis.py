@@ -46,8 +46,9 @@ y_test = np.zeros((25000,))
 y_test[0:12500] = 1
 
 vocab_size += 1
+no_hidden_units = 500
 
-model = BOW_model(vocab_size,500)
+model = BOW_model(vocab_size, no_hidden_units)
 model.cuda()
 
 # opt = 'sgd'
@@ -69,6 +70,8 @@ model.train()
 train_loss = []
 train_accu = []
 test_accu = []
+
+print ("Optmizer: %s" % opt, "LR: %.6f" % LR, "EpochSize: %d" % no_of_epochs, "BatchSize: %d" % batch_size, "VocalSize: %d" % (vocab_size-1), "HidenSize: %d" % no_hidden_units)
 
 for epoch in range(no_of_epochs):
 
