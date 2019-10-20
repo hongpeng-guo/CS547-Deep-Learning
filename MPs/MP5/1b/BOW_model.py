@@ -7,7 +7,7 @@ from torch.autograd import Variable
 import torch.distributed as dist
 
 class BOW_model(nn.Module):
-	 def __init__(self, no_of_hidden_units):       
+	def __init__(self, no_of_hidden_units):
 		super(BOW_model, self).__init__()
 		
 		self.fc_hidden1 = nn.Linear(300,no_of_hidden_units)
