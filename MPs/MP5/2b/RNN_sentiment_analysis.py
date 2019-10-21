@@ -153,7 +153,7 @@ def main(input_optimizer, input_batch_size, input_hidden_units, input_epochs):
 		for i in range(0, L_Y_test, batch_size):
 
 			x_input2 = [x_train[j] for j in I_permutation[i:i+batch_size]]
-			sequence_length = 200
+			sequence_length = 100
 			x_input = np.zeros((batch_size,sequence_length),dtype=np.int)
 			for j in range(batch_size):
 				x = np.asarray(x_input2[j])
@@ -163,6 +163,7 @@ def main(input_optimizer, input_batch_size, input_hidden_units, input_epochs):
 				else:
 					start_index = np.random.randint(sl-sequence_length+1)
 					x_input[j,:] = x[start_index:(start_index+sequence_length)]
+			x_input = glove_embeddings[x_input]
 			y_input = y_train[I_permutation[i:i+batch_size]]
 
 			data = Variable(torch.FloatTensor(x_input)).cuda()
