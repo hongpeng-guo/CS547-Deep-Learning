@@ -111,7 +111,7 @@ def main(input_optimizer, input_batch_size, input_hidden_units, input_epochs):
 			x_input = glove_embeddings[x_input]
 			y_input = y_train[I_permutation[i:i+batch_size]]
 
-			data = Variable(torch.LongTensor(x_input)).cuda()
+			data = Variable(torch.FloatTensor(x_input)).cuda()
 			target = Variable(torch.FloatTensor(y_input)).cuda()
 
 			optimizer.zero_grad()
@@ -165,7 +165,7 @@ def main(input_optimizer, input_batch_size, input_hidden_units, input_epochs):
 					x_input[j,:] = x[start_index:(start_index+sequence_length)]
 			y_input = y_train[I_permutation[i:i+batch_size]]
 
-			data = Variable(torch.LongTensor(x_input)).cuda()
+			data = Variable(torch.FloatTensor(x_input)).cuda()
 			target = Variable(torch.FloatTensor(y_input)).cuda()
 			
 			with torch.no_grad():
