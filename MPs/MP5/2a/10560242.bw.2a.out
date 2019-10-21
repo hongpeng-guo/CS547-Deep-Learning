@@ -1,0 +1,65 @@
+----------------------------------------
+Begin Torque Prologue on nid27558
+at Sun Oct 20 21:13:40 CDT 2019
+Job Id:			10560242.bw
+Username:		tra200
+Group:			TRAIN_bayw
+Job name:		2a_RNN_sentiment_analysis
+Requested resources:	nodes=01:ppn=16:xk,walltime=02:00:00,neednodes=01:ppn=16:xk
+Queue:			normal
+Account:		bayw
+End Torque Prologue:  0.112 elapsed
+----------------------------------------
+
+
+
+
+Optmizer: adam LR: 0.001000 EpochSize: 6 BatchSize: 200 VocalSize: 8000 HidenSize: 500
+0 68.97 0.5856 52.5379
+1 79.93 0.4305 51.3529
+2 83.47 0.3669 51.3670
+   89.24 0.2557
+3 85.32 0.3327 51.3613
+4 87.20 0.2991 51.3672
+5 88.69 0.2673 51.3679
+   93.95 0.1613
+Optmizer: adam LR: 0.001000 EpochSize: 6 BatchSize: 200 VocalSize: 8000 HidenSize: 300
+0 66.00 0.6155 33.3837
+1 78.39 0.4596 32.7738
+2 81.95 0.3992 32.7929
+   85.96 0.3249
+3 84.02 0.3581 32.7510
+4 85.42 0.3328 32.7707
+5 87.09 0.3022 32.7755
+   91.72 0.2166
+Optmizer: adam LR: 0.001000 EpochSize: 10 BatchSize: 200 VocalSize: 8000 HidenSize: 800
+0 69.66 0.5854 102.4390
+1 80.62 0.4187 102.1990
+2 84.35 0.3509 102.2200
+   90.53 0.2347
+3 86.45 0.3135 102.1998
+4 88.38 0.2750 102.2269
+5 89.94 0.2495 102.2535
+   93.58 0.1690
+6 91.80 0.2105 102.2811
+7 93.01 0.1827 102.2643
+8 93.24 0.1764 102.2603
+   96.59 0.0998
+9 94.17 0.1537 102.2658
+Optmizer: adam LR: 0.001000 EpochSize: 10 BatchSize: 500 VocalSize: 8000 HidenSize: 800
+0 66.75 0.6309 70.6390
+1 78.40 0.4510 70.4171
+2 82.92 0.3809 70.4157
+   87.06 0.3056
+3 84.94 0.3443 70.3934
+4 87.24 0.2992 70.3962
+5 88.89 0.2680 70.4152
+   93.35 0.1808
+6 90.38 0.2345 70.3985
+7 91.34 0.2173 70.4063
+8 92.84 0.1877 70.4227
+   96.53 0.1026
+9 93.40 0.1695 70.4249
+Application 81562769 resources: utime ~2474s, stime ~192s, Rss ~1703128, inblocks ~761247, outblocks ~268616
+Application 81562922 exit codes: 1
+Application 81562922 resources: utime ~29s, stime ~23s, Rss ~1504452, inblocks ~299395, outblocks ~3
