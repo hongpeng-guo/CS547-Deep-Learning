@@ -11,7 +11,7 @@ import os
 import sys
 import io
 
-from BOW_model import BOW_model
+from RNN_model import RNN_model
 
 #imdb_dictionary = np.load('../preprocessed_data/imdb_dictionary.npy')
 vocab_size = 8000

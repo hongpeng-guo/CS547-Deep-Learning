@@ -11,7 +11,7 @@ import os
 import sys
 import io
 
-from BOW_model import BOW_model
+from RNN_model import RNN_model
 
 glove_embeddings = np.load('../preprocessed_data/glove_embeddings.npy')
 vocab_size = 100000

@@ -154,7 +154,7 @@ def main(input_optimizer, input_batch_size, input_hidden_units, input_epochs):
 			target = Variable(torch.FloatTensor(y_input)).cuda()
 
 			with torch.no_grad():
-				loss, pred = model(x_input,target)
+				loss, pred = model(data,target)
 			
 			prediction = pred >= 0.0
 			truth = target >= 0.5

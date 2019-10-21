@@ -11,7 +11,7 @@ import os
 import sys
 import io
 
-from BOW_model import BOW_model
+from RNN_model import RNN_model
 
 
 def main(input_optimizer, input_batch_size, input_hidden_units, input_epochs):
@@ -52,7 +52,7 @@ def main(input_optimizer, input_batch_size, input_hidden_units, input_epochs):
 	# no_hidden_units = 500
 	no_hidden_units = input_hidden_units
 
-	model = BOW_model(vocab_size, no_hidden_units)
+	model = RNN_model(vocab_size, no_hidden_units)
 	model.cuda()
 
 	# opt = 'sgd'
