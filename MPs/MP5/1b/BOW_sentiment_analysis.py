@@ -180,6 +180,6 @@ def main(input_optimizer, input_batch_size, input_hidden_units, input_epochs):
 
 if __name__ == "__main__":
 	main(input_optimizer='adam', input_batch_size=200, input_hidden_units=500, input_epochs=6)
-	main(input_optimizer='adam', input_batch_size=200, input_hidden_units=300, input_epochs=6)
-	main(input_optimizer='adam', input_batch_size=200, input_hidden_units=800, input_epochs=10)
-	main(input_optimizer='adam', input_batch_size=500, input_hidden_units=800, input_epochs=10)
+	main(input_optimizer='adam', input_batch_size=200, input_hidden_units=10, input_epochs=10)
+	main(input_optimizer='adam', input_batch_size=200, input_hidden_units=1500, input_epochs=20)
+	main(input_optimizer='sgd', input_batch_size=500, input_hidden_units=500, input_epochs=100)

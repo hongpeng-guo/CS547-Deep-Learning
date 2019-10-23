@@ -72,8 +72,6 @@ def main(input_optimizer, input_batch_size, input_hidden_units, input_epochs):
 	L_Y_train = len(y_train)
 	L_Y_test = len(y_test)
 
-	model.train()
-
 	train_loss = []
 	train_accu = []
 	test_accu = []
@@ -97,7 +95,7 @@ def main(input_optimizer, input_batch_size, input_hidden_units, input_epochs):
 
 		for i in range(0, L_Y_train, batch_size):
 
-			x_input2 = [x_train[j] for j in I_permutation[i:i+batch_size]]
+			x_input2 = [x_test[j] for j in I_permutation[i:i+batch_size]]
 			sequence_length = 100
 			x_input = np.zeros((batch_size,sequence_length),dtype=np.int)
 			for j in range(batch_size):
@@ -109,7 +107,7 @@ def main(input_optimizer, input_batch_size, input_hidden_units, input_epochs):
 					start_index = np.random.randint(sl-sequence_length+1)
 					x_input[j,:] = x[start_index:(start_index+sequence_length)]
 			x_input = glove_embeddings[x_input]
-			y_input = y_train[I_permutation[i:i+batch_size]]
+			y_input = y_test[I_permutation[i:i+batch_size]]
 
 			data = Variable(torch.FloatTensor(x_input)).cuda()
 			target = Variable(torch.FloatTensor(y_input)).cuda()
@@ -153,7 +151,7 @@ def main(input_optimizer, input_batch_size, input_hidden_units, input_epochs):
 		for i in range(0, L_Y_test, batch_size):
 
 			x_input2 = [x_train[j] for j in I_permutation[i:i+batch_size]]
-			sequence_length = 100
+			sequence_length = 450
 			x_input = np.zeros((batch_size,sequence_length),dtype=np.int)
 			for j in range(batch_size):
 				x = np.asarray(x_input2[j])
@@ -194,10 +192,7 @@ def main(input_optimizer, input_batch_size, input_hidden_units, input_epochs):
 	data = np.asarray(data)
 	np.save('data.npy',data)
 
-	os.system('python RNN_test.py')
-
 if __name__ == "__main__":
-	main(input_optimizer='adam', input_batch_size=200, input_hidden_units=500, input_epochs=6)
-	main(input_optimizer='adam', input_batch_size=200, input_hidden_units=300, input_epochs=6)
-	main(input_optimizer='adam', input_batch_size=200, input_hidden_units=800, input_epochs=10)
-	main(input_optimizer='adam', input_batch_size=500, input_hidden_units=800, input_epochs=10)
+	main(input_optimizer='adam', input_batch_size=200, input_hidden_units=500, input_epochs=20)
+	main(input_optimizer='adam', input_batch_size=200, input_hidden_units=1500, input_epochs=20)
+	main(input_optimizer='sgd', input_batch_size=200, input_hidden_units=500, input_epochs=100)

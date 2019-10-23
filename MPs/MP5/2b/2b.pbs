@@ -10,4 +10,3 @@ cd /u/training/tra200/CS547-Deep-Learning/MPs/MP5/2b
 . /opt/modules/default/init/bash  
 module load python/2.0.1
 aprun -n 1 -N 1 python RNN_sentiment_analysis.py
-aprun -n 1 -N 1 python RNN_test.py
