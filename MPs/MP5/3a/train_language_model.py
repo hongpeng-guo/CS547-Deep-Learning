@@ -50,7 +50,7 @@ def main(input_optimizer, input_batch_size, input_hidden_units, input_epochs):
 	# no_hidden_units = 500
 	no_hidden_units = input_hidden_units
 
-	model = RNN_model(vocab_size, no_hidden_units)
+	model = RNN_language_model(vocab_size, no_hidden_units)
 	model.cuda()
 
 	# opt = 'sgd'
