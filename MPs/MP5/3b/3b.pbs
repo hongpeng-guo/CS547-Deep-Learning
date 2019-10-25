@@ -1,0 +1,12 @@
+#!/bin/bash
+#PBS -l nodes=01:ppn=16:xk
+#PBS -l walltime=01:00:00
+#PBS -N 3b_generate_review
+#PBS -e $PBS_JOBID.3b.err
+#PBS -o $PBS_JOBID.3b.out
+#PBS -m bea
+#PBS -M hg5@illinois.edu
+cd /u/training/tra200/CS547-Deep-Learning/MPs/MP5/3b
+. /opt/modules/default/init/bash  
+module load python/2.0.1
+aprun -n 1 -N 1 python generate_review.py
