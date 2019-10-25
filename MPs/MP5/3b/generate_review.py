@@ -117,7 +117,7 @@ def main(input_temp, input_length):
 			prnt_str += ' '
 		print(prnt_str)
 
-if __name__ = "__main__":
+if __name__ == "__main__":
 	main(1.0, 150)
 	main(0.5, 150)
 	main(0.25, 150)
