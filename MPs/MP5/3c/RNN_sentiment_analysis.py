@@ -11,7 +11,7 @@ import os
 import sys
 import io
 
-from RNN_model import RNN_model
+from RNN_language_model import RNN_language_model
 
 
 def main(input_optimizer, input_batch_size, input_hidden_units, input_epochs):
