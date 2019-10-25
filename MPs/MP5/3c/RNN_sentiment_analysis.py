@@ -52,7 +52,7 @@ def main(input_optimizer, input_batch_size, input_hidden_units, input_epochs):
 	# no_hidden_units = 500
 	no_hidden_units = input_hidden_units
 
-	model = RNN_model(vocab_size,500)
+	model = RNN_language_model(vocab_size,500)
 	language_model = torch.load('../3a/language.model')
 	model.embedding.load_state_dict(language_model.embedding.state_dict())
 	model.lstm1.lstm.load_state_dict(language_model.lstm1.lstm.state_dict())
