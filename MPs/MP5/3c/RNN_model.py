@@ -59,13 +59,13 @@ class RNN_model(nn.Module):
 		self.bn_lstm1= nn.BatchNorm1d(no_of_hidden_units)
 		self.dropout1 = LockedDropout() #torch.nn.Dropout(p=0.5)
 
-		# self.lstm2 = StatefulLSTM(no_of_hidden_units,no_of_hidden_units)
-		# self.bn_lstm2= nn.BatchNorm1d(no_of_hidden_units)
-		# self.dropout2 = LockedDropout() #torch.nn.Dropout(p=0.5)
+		self.lstm2 = StatefulLSTM(no_of_hidden_units,no_of_hidden_units)
+		self.bn_lstm2= nn.BatchNorm1d(no_of_hidden_units)
+		self.dropout2 = LockedDropout() #torch.nn.Dropout(p=0.5)
 
-		# self.lstm3 = StatefulLSTM(no_of_hidden_units,no_of_hidden_units)
-		# self.bn_lstm3= nn.BatchNorm1d(no_of_hidden_units)
-		# self.dropout3 = LockedDropout() #torch.nn.Dropout(p=0.5)
+		self.lstm3 = StatefulLSTM(no_of_hidden_units,no_of_hidden_units)
+		self.bn_lstm3= nn.BatchNorm1d(no_of_hidden_units)
+		self.dropout3 = LockedDropout() #torch.nn.Dropout(p=0.5)
 
 		self.fc_output = nn.Linear(no_of_hidden_units, 1)
 
