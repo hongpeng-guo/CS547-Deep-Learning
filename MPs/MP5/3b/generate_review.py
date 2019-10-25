@@ -87,7 +87,7 @@ def main(input_temp, input_length):
 		review.append(x.cpu().data.numpy()[:,0])
 
 		## predict the next word
-		embed = model.embedding(x)
+		embed = model.embedding(x[:,0,:])
 
 		h = model.lstm1(embed)
 		h = model.bn_lstm1(h)
