@@ -113,8 +113,8 @@ def main(input_optimizer, input_batch_size, input_hidden_units, input_epochs):
 			optimizer.zero_grad()
 			loss, pred = model(x_input)
 			loss.backward()
-			
-			if(EPOCH>6):
+
+			if(epoch > 6):
 				for group in optimizer.param_groups:
 					for p in group['params']:
 						state = optimizer.state[p]
