@@ -65,16 +65,16 @@ def main(input_optimizer, input_batch_size, input_hidden_units, input_epochs):
 	model.cuda()
 
 	params = []
-	for param in model.embedding.parameters():
-	    params.append(param)
-	for param in model.lstm1.parameters():
-	    params.append(param)
-	for param in model.bn_lstm1.parameters():
-	    params.append(param)
-	for param in model.lstm2.parameters():
-	    params.append(param)
-	for param in model.bn_lstm2.parameters():
-	    params.append(param)
+	# for param in model.embedding.parameters():
+	#     params.append(param)
+	# for param in model.lstm1.parameters():
+	#     params.append(param)
+	# for param in model.bn_lstm1.parameters():
+	#     params.append(param)
+	# for param in model.lstm2.parameters():
+	#     params.append(param)
+	# for param in model.bn_lstm2.parameters():
+	#     params.append(param)
 	for param in model.lstm3.parameters():
 		params.append(param)
 	for param in model.bn_lstm3.parameters():

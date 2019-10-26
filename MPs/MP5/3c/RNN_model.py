@@ -75,8 +75,10 @@ class RNN_model(nn.Module):
 	def reset_state(self):
 		self.lstm1.reset_state()
 		self.dropout1.reset_state()
-		# self.lstm2.reset_state()
-		# self.dropout2.reset_state()
+		self.lstm2.reset_state()
+		self.dropout2.reset_state()
+		self.lstm3.reset_state()
+		self.dropout3.reset_state()
 
 	def forward(self, x, t, train=True):
 
@@ -91,11 +93,15 @@ class RNN_model(nn.Module):
 
 			h = self.lstm1(embed[:,i,:])
 			h = self.bn_lstm1(h)
-			h = self.dropout1(h,dropout=0.5,train=train)
+			h = self.dropout1(h,dropout=0.3,train=train)
 
-			# h = self.lstm2(h)
-			# h = self.bn_lstm2(h)
-			# h = self.dropout2(h,dropout=0.3,train=train)
+			h = self.lstm2(h)
+			h = self.bn_lstm2(h)
+			h = self.dropout2(h,dropout=0.3,train=train)
+
+			h = self.lstm3(h)
+			h = self.bn_lstm3(h)
+			h = self.dropout3(h,dropout=0.3,train=train)
 
 			outputs.append(h)
 
