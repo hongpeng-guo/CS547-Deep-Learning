@@ -65,16 +65,16 @@ def main(input_optimizer, input_batch_size, input_hidden_units, input_epochs):
 	model.cuda()
 
 	params = []
-	# for param in model.embedding.parameters():
-	#     params.append(param)
-	# for param in model.lstm1.parameters():
-	#     params.append(param)
-	# for param in model.bn_lstm1.parameters():
-	#     params.append(param)
-	# for param in model.lstm2.parameters():
-	#     params.append(param)
-	# for param in model.bn_lstm2.parameters():
-	#     params.append(param)
+	for param in model.embedding.parameters():
+	    params.append(param)
+	for param in model.lstm1.parameters():
+	    params.append(param)
+	for param in model.bn_lstm1.parameters():
+	    params.append(param)
+	for param in model.lstm2.parameters():
+	    params.append(param)
+	for param in model.bn_lstm2.parameters():
+	    params.append(param)
 	for param in model.lstm3.parameters():
 		params.append(param)
 	for param in model.bn_lstm3.parameters():
@@ -123,7 +123,7 @@ def main(input_optimizer, input_batch_size, input_hidden_units, input_epochs):
 
 		for i in range(0, L_Y_train, batch_size):
 
-			x_input2 = [x_test[j] for j in I_permutation[i:i+batch_size]]
+			x_input2 = [x_train[j] for j in I_permutation[i:i+batch_size]]
 			sequence_length = 100
 			x_input = np.zeros((batch_size,sequence_length),dtype=np.int)
 			for j in range(batch_size):
@@ -134,7 +134,7 @@ def main(input_optimizer, input_batch_size, input_hidden_units, input_epochs):
 				else:
 					start_index = np.random.randint(sl-sequence_length+1)
 					x_input[j,:] = x[start_index:(start_index+sequence_length)]
-			y_input = y_test[I_permutation[i:i+batch_size]]
+			y_input = y_train[I_permutation[i:i+batch_size]]
 
 			data = Variable(torch.LongTensor(x_input)).cuda()
 			target = Variable(torch.FloatTensor(y_input)).cuda()
@@ -177,7 +177,7 @@ def main(input_optimizer, input_batch_size, input_hidden_units, input_epochs):
 
 		for i in range(0, L_Y_test, batch_size):
 
-			x_input2 = [x_train[j] for j in I_permutation[i:i+batch_size]]
+			x_input2 = [x_test[j] for j in I_permutation[i:i+batch_size]]
 			sequence_length = 450
 			x_input = np.zeros((batch_size,sequence_length),dtype=np.int)
 			for j in range(batch_size):
@@ -188,7 +188,7 @@ def main(input_optimizer, input_batch_size, input_hidden_units, input_epochs):
 				else:
 					start_index = np.random.randint(sl-sequence_length+1)
 					x_input[j,:] = x[start_index:(start_index+sequence_length)]
-			y_input = y_train[I_permutation[i:i+batch_size]]
+			y_input = y_test[I_permutation[i:i+batch_size]]
 
 			data = Variable(torch.LongTensor(x_input)).cuda()
 			target = Variable(torch.FloatTensor(y_input)).cuda()
