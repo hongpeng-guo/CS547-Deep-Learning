@@ -11,47 +11,50 @@ class discriminator(nn.Module):
 		self.conv_layer = nn.Sequential(
 
 			nn.Conv2d(3, 196, kernel_size=3, padding=1, stride=1),
-			nn.LayerNorm(196),
+			nn.LayerNorm((196, 32, 32)),
 			nn.LeakyReLU(),
 
 			nn.Conv2d(196, 196, kernel_size=3, padding=1, stride=2),
-			nn.LayerNorm(196),
+			nn.LayerNorm((196, 16, 16)),
 			nn.LeakyReLU(),
 
 			nn.Conv2d(3, 196, kernel_size=3, padding=1, stride=1),
-			nn.LayerNorm(196),
+			nn.LayerNorm((196, 16, 16)),
 			nn.LeakyReLU(),
 
 			nn.Conv2d(196, 196, kernel_size=3, padding=1, stride=2),
-			nn.LayerNorm(196),
+			nn.LayerNorm((196, 8, 8)),
 			nn.LeakyReLU(),
 
 			nn.Conv2d(3, 196, kernel_size=3, padding=1, stride=1),
-			nn.LayerNorm(196),
+			nn.LayerNorm((196, 8, 8)),
 			nn.LeakyReLU(),
 
 			nn.Conv2d(3, 196, kernel_size=3, padding=1, stride=1),
-			nn.LayerNorm(196),
+			nn.LayerNorm((196, 8, 8)),
 			nn.LeakyReLU(),
 
 			nn.Conv2d(3, 196, kernel_size=3, padding=1, stride=1),
-			nn.LayerNorm(196),
+			nn.LayerNorm((196, 8, 8)),
 			nn.LeakyReLU(),
 
 			nn.Conv2d(196, 196, kernel_size=3, padding=1, stride=2),
-			nn.LayerNorm(196),
+			nn.LayerNorm((196, 4, 4)),
 			nn.LeakyReLU(),
 
 			nn.MaxPool2d(kernel_size=4, stride=4),
 		)
-		
+
 		self.fc1 = nn.Linear(196, 1)
 		self.fc10 = nn.Linear(196, 10)
 		
 
 	def forward(self, x):
+		print (x.shape)
 		conv_out = self.conv_layer(x)
+		print (conv_out.shape)
 		conv_out = conv_out.reshape(conv_out.size(0), -1)
+		print (conv_out.shape)
 		fc1_out = self.fc1(conv_out)
 		fc10_out = self.fc10(conv_out)
 		return fc1_out, fc10_out
