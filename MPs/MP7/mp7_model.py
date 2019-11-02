@@ -72,7 +72,7 @@ class discriminator(nn.Module):
 
 class generator(nn.Module):
 	def __init__(self, num_classes=10):
-		super(ConvNet, self).__init__()
+		super(generator, self).__init__()
 
 		self.fc1 = nn.Linear(100, 196*4*4)
 
