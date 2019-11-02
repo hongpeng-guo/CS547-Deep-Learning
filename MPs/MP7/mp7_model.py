@@ -64,8 +64,8 @@ class discriminator(nn.Module):
 		conv_out_7 = self.conv_layer7(conv_out_6)
 		conv_out_8 = self.conv_layer8(conv_out_7)
 		conv_out_8 = conv_out_8.reshape(conv_out_8.size(0), -1)
-		fc1_out = self.fc1(conv_out)
-		fc10_out = self.fc10(conv_out)
+		fc1_out = self.fc1(conv_out8)
+		fc10_out = self.fc10(conv_out8)
 		return fc1_out, fc10_out
 
 
