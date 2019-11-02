@@ -155,8 +155,8 @@ for epoch in range(0,num_epochs):
 			for group in optimizer_g.param_groups:
 				for p in group['params']:
 					state = optimizer_g.state[p]
-						if('step' in state and state['step']>=1024):
-							state['step'] = 1000
+					if('step' in state and state['step']>=1024):
+						state['step'] = 1000
 			optimizer_g.step()
 
 		# train D
@@ -203,8 +203,8 @@ for epoch in range(0,num_epochs):
 		for group in optimizer_d.param_groups:
 			for p in group['params']:
 				state = optimizer_d.state[p]
-					if('step' in state and state['step']>=1024):
-						state['step'] = 1000
+				if('step' in state and state['step']>=1024):
+					state['step'] = 1000
 		optimizer_d.step()
 
 	# within the training loop

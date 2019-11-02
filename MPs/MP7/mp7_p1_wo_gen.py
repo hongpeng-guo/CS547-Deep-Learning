@@ -72,8 +72,8 @@ for epoch in range(num_epochs):
 		for group in optimizer.param_groups:
 			for p in group['params']:
 				state = optimizer.state[p]
-					if('step' in state and state['step']>=1024):
-						state['step'] = 1000
+				if('step' in state and state['step']>=1024):
+					state['step'] = 1000
 		optimizer.step()
 
 		prediction = output.data.max(1)[1] #Label Prediction 
