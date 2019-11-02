@@ -54,6 +54,7 @@ for epoch in range(num_epochs):
 		for param_group in optimizer.param_groups:
 			param_group['lr'] = learning_rate/100.0
 
+	# Train the model
 	model.train()
 	train_accuracy = []
 	for batch_idx, (X_train_batch, Y_train_batch) in enumerate(trainloader):
@@ -76,21 +77,21 @@ for epoch in range(num_epochs):
 	print('\nIn epoch ', epoch,' the accuracy of the training set =', accuracy_epoch)
 	train_accuracy_final.append(accuracy_epoch)
 
+	# Test the model
 	model.eval()
-	correct = 0
-	total = 0
-	for batch_idx, (X_test_batch, Y_test_batch) in enumerate(testloader):
-		if(Y_test_batch.shape[0] < batch_size):
-			continue
-		X_test_batch = Variable(X_test_batch).cuda()
-		Y_test_batch = Variable(Y_test_batch).cuda()
-		_, output = model(X_test_batch)
+	with torch.no_grad():
+		test_accu = []
+		for batch_idx, (X_test_batch, Y_test_batch) in enumerate(testloader):
+			X_test_batch, Y_test_batch= Variable(X_test_batch).cuda(),Variable(Y_test_batch).cuda()
 
-		prediction = output.data.max(1)[1] #Label Prediction 
-		correct += float(prediction.eq(Y_test_batch.data)).sum()
-		total  += float(batch_size)    
-	accuracy_epoch = correct/total
-	print('\nIn epoch ', epoch,' the accuracy of the tessting set =', accuracy_epoch)
+			with torch.no_grad():
+				_, output = model(X_test_batch)
+
+			prediction = output.data.max(1)[1] # first column has actual prob.
+			accuracy = ( float( prediction.eq(Y_test_batch.data).sum() ) /float(batch_size))*100.0
+			test_accu.append(accuracy)
+			accuracy_test = np.mean(test_accu)
+	print('\nIn epoch ', epoch,' the accuracy of the training set =', accuracy_test)
 	train_accuracy_final.append(accuracy_epoch)
 
 
