@@ -54,7 +54,7 @@ for epoch in range(num_epochs):
 			param_group['lr'] = learning_rate/100.0
 
 	model.train()
-	test_accuracy = []
+	train_accuracy = []
 	for batch_idx, (X_train_batch, Y_train_batch) in enumerate(trainloader):
 		if(Y_train_batch.shape[0] < batch_size):
 			continue
