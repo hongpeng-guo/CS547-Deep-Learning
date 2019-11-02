@@ -68,6 +68,12 @@ for epoch in range(num_epochs):
 		optimizer.zero_grad()
 
 		loss.backward()
+
+		for group in optimizer.param_groups:
+			for p in group['params']:
+				state = optimizer.state[p]
+					if('step' in state and state['step']>=1024):
+						state['step'] = 1000
 		optimizer.step()
 
 		prediction = output.data.max(1)[1] #Label Prediction 
@@ -91,7 +97,7 @@ for epoch in range(num_epochs):
 			accuracy = ( float( prediction.eq(Y_test_batch.data).sum() ) /float(batch_size))*100.0
 			test_accu.append(accuracy)
 			accuracy_test = np.mean(test_accu)
-	print('\nIn epoch ', epoch,' the accuracy of the training set =', accuracy_test)
+	print('\nIn epoch ', epoch,' the accuracy of the testing set =', accuracy_test)
 	train_accuracy_final.append(accuracy_epoch)
 
 
