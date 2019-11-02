@@ -46,9 +46,8 @@ class discriminator(nn.Module):
 		self.conv_layer8 = nn.Sequential(
 			nn.Conv2d(196, 196, kernel_size=3, padding=1, stride=2),
 			nn.LayerNorm((196, 4, 4)),
-			nn.LeakyReLU(),)
-
-		self.max_pool = nn.MaxPool2d(kernel_size=4, stride=4),
+			nn.LeakyReLU(),
+			nn.MaxPool2d(kernel_size=4, stride=4),)
 
 		self.fc1 = nn.Linear(196, 1)
 
@@ -64,8 +63,7 @@ class discriminator(nn.Module):
 		conv_out_6 = self.conv_layer6(conv_out_5)
 		conv_out_7 = self.conv_layer7(conv_out_6)
 		conv_out_8 = self.conv_layer8(conv_out_7)
-		pool_out = self.max_pool(conv_out_8)
-		pool_out = pool_out.reshape(pool_out.size(0), -1)
+		conv_out_8 = conv_out_8.reshape(conv_out_8.size(0), -1)
 		fc1_out = self.fc1(conv_out)
 		fc10_out = self.fc10(conv_out)
 		return fc1_out, fc10_out
