@@ -1,0 +1,5 @@
+# Ignore all content
+/*
+# Except the following files
+!/.gitignore
+!/*.py
