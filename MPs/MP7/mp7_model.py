@@ -19,7 +19,7 @@ class discriminator(nn.Module):
 			nn.LeakyReLU(),)
 		
 		self.conv_layer3 = nn.Sequential(
-			nn.Conv2d(3, 196, kernel_size=3, padding=1, stride=1),
+			nn.Conv2d(196, 196, kernel_size=3, padding=1, stride=1),
 			nn.LayerNorm((196, 16, 16)),
 			nn.LeakyReLU(),)
 		
@@ -29,17 +29,17 @@ class discriminator(nn.Module):
 			nn.LeakyReLU(),)
 		
 		self.conv_layer5 = nn.Sequential(
-			nn.Conv2d(3, 196, kernel_size=3, padding=1, stride=1),
+			nn.Conv2d(196, 196, kernel_size=3, padding=1, stride=1),
 			nn.LayerNorm((196, 8, 8)),
 			nn.LeakyReLU(),)
 		
 		self.conv_layer6 = nn.Sequential(
-			nn.Conv2d(3, 196, kernel_size=3, padding=1, stride=1),
+			nn.Conv2d(196, 196, kernel_size=3, padding=1, stride=1),
 			nn.LayerNorm((196, 8, 8)),
 			nn.LeakyReLU(),)
 		
 		self.conv_layer7 = nn.Sequential(
-			nn.Conv2d(3, 196, kernel_size=3, padding=1, stride=1),
+			nn.Conv2d(196, 196, kernel_size=3, padding=1, stride=1),
 			nn.LayerNorm((196, 8, 8)),
 			nn.LeakyReLU(),)
 		
