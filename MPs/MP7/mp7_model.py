@@ -79,35 +79,35 @@ class generator(nn.Module):
 		self.conv_layer = nn.Sequential(
 
 			nn.ConvTranspose2d(196, 196, kernel_size=4, padding=1, stride=2),
-			nn.BatchNorm(196),
+			nn.BatchNorm2d(196),
 			nn.ReLU(),
 
 			nn.ConvTranspose2d(196, 196, kernel_size=3, padding=1, stride=1),
-			nn.BatchNorm(196),
+			nn.BatchNorm2d(196),
 			nn.ReLU(),
 
 			nn.ConvTranspose2d(196, 196, kernel_size=3, padding=1, stride=1),
-			nn.BatchNorm(196),
+			nn.BatchNorm2d(196),
 			nn.ReLU(),
 
 			nn.ConvTranspose2d(196, 196, kernel_size=3, padding=1, stride=1),
-			nn.BatchNorm(196),
+			nn.BatchNorm2d(196),
 			nn.ReLU(),
 
 			nn.ConvTranspose2d(196, 196, kernel_size=4, padding=1, stride=2),
-			nn.BatchNorm(196),
+			nn.BatchNorm2d(196),
 			nn.ReLU(),
 
 			nn.ConvTranspose2d(196, 196, kernel_size=3, padding=1, stride=1),
-			nn.BatchNorm(196),
+			nn.BatchNorm2d(196),
 			nn.ReLU(),
 
 			nn.ConvTranspose2d(196, 196, kernel_size=4, padding=1, stride=2),
-			nn.BatchNorm(196),
+			nn.BatchNorm2d(196),
 			nn.ReLU(),
 
 			nn.ConvTranspose2d(196, 3, kernel_size=3, padding=1, stride=1),
-			nn.BatchNorm(3),
+			nn.BatchNorm2d(3),
 			nn.ReLU(),
 		)
 
