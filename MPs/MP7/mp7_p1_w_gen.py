@@ -4,7 +4,7 @@ import numpy as np
 import torchvision
 import torchvision.transforms as transforms
 import torch.nn.functional as F
-import torch.autograd
+import torch.autograd as autograd
 from torch.autograd import Variable
 from mp7_model import discriminator, generator
 import matplotlib
