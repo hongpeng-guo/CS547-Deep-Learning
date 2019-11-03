@@ -94,6 +94,7 @@ optimizer_d = torch.optim.Adam(aD.parameters(), lr=0.0001, betas=(0,0.9))
 criterion = nn.CrossEntropyLoss()
 
 np.random.seed(352)
+n_z = 100
 label = np.asarray(list(range(10))*10)
 noise = np.random.normal(0,1,(100,n_z))
 label_onehot = np.zeros((100,n_classes))
