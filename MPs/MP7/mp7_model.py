@@ -114,6 +114,6 @@ class generator(nn.Module):
 		
 	def forward(self, x):
 		fc1_out = self.fc1(x)
-		fc1_out = fc1_out.reshape(-1, 196, 3, 3)
+		fc1_out = fc1_out.reshape(-1, 196, 4, 4)
 		conv_out = self.conv_layer(fc1_out)
 		return conv_out
