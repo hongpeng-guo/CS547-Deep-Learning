@@ -95,6 +95,7 @@ criterion = nn.CrossEntropyLoss()
 np.random.seed(352)
 n_z = 100
 n_classes = 10
+
 label = np.asarray(list(range(10))*10)
 noise = np.random.normal(0,1,(100,n_z))
 label_onehot = np.zeros((100,n_classes))
@@ -114,6 +115,7 @@ loss4 = []
 loss5 = []
 acc1 = []
 
+gen_train = 5
 
 # Train the model
 for epoch in range(0,num_epochs):
