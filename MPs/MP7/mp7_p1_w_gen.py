@@ -106,8 +106,6 @@ save_noise = torch.from_numpy(noise)
 save_noise = Variable(save_noise).cuda()
 
 
-start_time = time.time()
-
 # before epoch training loop starts
 loss1 = []
 loss2 = []
@@ -237,7 +235,7 @@ for epoch in range(0,num_epochs):
 			accuracy = ( float( prediction.eq(Y_test_batch.data).sum() ) /float(batch_size))*100.0
 			test_accu.append(accuracy)
 			accuracy_test = np.mean(test_accu)
-	print('Testing',accuracy_test, time.time()-start_time)
+	print('Testing',accuracy_test)
 
 
 	### save output
