@@ -6,12 +6,11 @@ import torchvision.transforms as transforms
 import torch.nn.functional as F
 from torch.autograd import Variable
 from mp7_model import discriminator, generator
-
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
-import os
+import os, time
 
 
 def calc_gradient_penalty(netD, real_data, fake_data):
