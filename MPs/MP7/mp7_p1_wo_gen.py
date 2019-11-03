@@ -10,6 +10,7 @@ from mp7_model import discriminator, generator
 # Hyper parameters
 num_epochs = 100
 batch_size = 128
+learning_rate = 0.0001
 
 
 transform_train = transforms.Compose([
@@ -40,7 +41,7 @@ testloader = torch.utils.data.DataLoader(testset, batch_size=batch_size, shuffle
 model =  discriminator()
 model.cuda()
 criterion = nn.CrossEntropyLoss()
-optimizer = torch.optim.Adam(model.parameters(), lr=0.0001)
+optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
 
 train_accuracy_final = []
 test_accuracy_final = []
