@@ -74,7 +74,10 @@ class generator(nn.Module):
 	def __init__(self, num_classes=10):
 		super(generator, self).__init__()
 
-		self.fc1 = nn.Linear(100, 196*4*4)
+		self.fc1 = nn.Sequential(
+			nn.Linear(100, 196*4*4),
+			nn.BatchNorm2d(196*4*4),
+		)
 
 		self.conv_layer = nn.Sequential(
 
@@ -107,8 +110,6 @@ class generator(nn.Module):
 			nn.ReLU(),
 
 			nn.ConvTranspose2d(196, 3, kernel_size=3, padding=1, stride=1),
-			nn.BatchNorm2d(3),
-			nn.ReLU(),
 		)
 
 		
@@ -116,4 +117,5 @@ class generator(nn.Module):
 		fc1_out = self.fc1(x)
 		fc1_out = fc1_out.reshape(-1, 196, 4, 4)
 		conv_out = self.conv_layer(fc1_out)
+		conv_out = torch.tanh(conv_out)
 		return conv_out

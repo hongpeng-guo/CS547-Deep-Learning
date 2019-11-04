@@ -14,6 +14,13 @@ import matplotlib.gridspec as gridspec
 import os, time
 
 
+n_z = 100
+n_classes = 10
+gen_train = 1
+num_epochs = 200
+batch_size = 128
+
+
 def calc_gradient_penalty(netD, real_data, fake_data):
 	DIM = 32
 	LAMBDA = 10
@@ -39,6 +46,7 @@ def calc_gradient_penalty(netD, real_data, fake_data):
 	return gradient_penalty
 
 
+
 def plot(samples):
 	fig = plt.figure(figsize=(10, 10))
 	gs = gridspec.GridSpec(10, 10)
@@ -54,8 +62,6 @@ def plot(samples):
 	return fig
 
 
-num_epochs = 100
-batch_size = 128
 
 transform_train = transforms.Compose([
 	transforms.RandomResizedCrop(32, scale=(0.7, 1.0), ratio=(1.0,1.0)),
@@ -94,9 +100,6 @@ optimizer_d = torch.optim.Adam(aD.parameters(), lr=0.0001, betas=(0,0.9))
 criterion = nn.CrossEntropyLoss()
 
 np.random.seed(352)
-n_z = 100
-n_classes = 10
-
 label = np.asarray(list(range(10))*10)
 noise = np.random.normal(0,1,(100,n_z))
 label_onehot = np.zeros((100,n_classes))
@@ -116,7 +119,6 @@ loss4 = []
 loss5 = []
 acc1 = []
 
-gen_train = 5
 
 # Train the model
 for epoch in range(0,num_epochs):
@@ -209,20 +211,20 @@ for epoch in range(0,num_epochs):
 					state['step'] = 1000
 		optimizer_d.step()
 
-	# within the training loop
-	loss1.append(gradient_penalty.item())
-	loss2.append(disc_fake_source.item())
-	loss3.append(disc_real_source.item())
-	loss4.append(disc_real_class.item())
-	loss5.append(disc_fake_class.item())
-	acc1.append(accuracy)
-	if((batch_idx%50)==0):
-		print(epoch, batch_idx, "%.2f" % np.mean(loss1), 
-								"%.2f" % np.mean(loss2), 
-								"%.2f" % np.mean(loss3), 
-								"%.2f" % np.mean(loss4), 
-								"%.2f" % np.mean(loss5), 
-								"%.2f" % np.mean(acc1))
+		# within the training loop
+		loss1.append(gradient_penalty.item())
+		loss2.append(disc_fake_source.item())
+		loss3.append(disc_real_source.item())
+		loss4.append(disc_real_class.item())
+		loss5.append(disc_fake_class.item())
+		acc1.append(accuracy)
+		if((batch_idx%50)==0):
+			print(epoch, batch_idx, "%.2f" % np.mean(loss1), 
+									"%.2f" % np.mean(loss2), 
+									"%.2f" % np.mean(loss3), 
+									"%.2f" % np.mean(loss4), 
+									"%.2f" % np.mean(loss5), 
+									"%.2f" % np.mean(acc1))
 
 	# Test the model
 	aD.eval()
