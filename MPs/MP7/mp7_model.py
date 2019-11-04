@@ -85,23 +85,15 @@ class generator(nn.Module):
 			nn.BatchNorm2d(196),
 			nn.ReLU(),
 
-			nn.ConvTranspose2d(196, 196, kernel_size=3, padding=1, stride=1),
+			nn.Conv2d(196, 196, kernel_size=3, padding=1, stride=1),
 			nn.BatchNorm2d(196),
 			nn.ReLU(),
 
-			nn.ConvTranspose2d(196, 196, kernel_size=3, padding=1, stride=1),
+			nn.Conv2d(196, 196, kernel_size=3, padding=1, stride=1),
 			nn.BatchNorm2d(196),
 			nn.ReLU(),
 
-			nn.ConvTranspose2d(196, 196, kernel_size=3, padding=1, stride=1),
-			nn.BatchNorm2d(196),
-			nn.ReLU(),
-
-			nn.ConvTranspose2d(196, 196, kernel_size=4, padding=1, stride=2),
-			nn.BatchNorm2d(196),
-			nn.ReLU(),
-
-			nn.ConvTranspose2d(196, 196, kernel_size=3, padding=1, stride=1),
+			nn.Conv2d(196, 196, kernel_size=3, padding=1, stride=1),
 			nn.BatchNorm2d(196),
 			nn.ReLU(),
 
@@ -109,7 +101,15 @@ class generator(nn.Module):
 			nn.BatchNorm2d(196),
 			nn.ReLU(),
 
-			nn.ConvTranspose2d(196, 3, kernel_size=3, padding=1, stride=1),
+			nn.Conv2d(196, 196, kernel_size=3, padding=1, stride=1),
+			nn.BatchNorm2d(196),
+			nn.ReLU(),
+
+			nn.ConvTranspose2d(196, 196, kernel_size=4, padding=1, stride=2),
+			nn.BatchNorm2d(196),
+			nn.ReLU(),
+
+			nn.Conv2d(196, 3, kernel_size=3, padding=1, stride=1),
 		)
 
 		
