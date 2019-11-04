@@ -76,7 +76,7 @@ class generator(nn.Module):
 
 		self.fc1 = nn.Sequential(
 			nn.Linear(100, 196*4*4),
-			nn.BatchNorm2d(196*4*4),
+			nn.BatchNorm1d(196*4*4),
 		)
 
 		self.conv_layer = nn.Sequential(
