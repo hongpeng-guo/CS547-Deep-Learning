@@ -78,7 +78,7 @@ class discriminator(nn.Module):
 		conv_out_7 = self.conv_layer7(conv_out_6)
 		conv_out_8 = self.conv_layer8(conv_out_7)
 		if(extract_features==8):
-			x = conv_out_4
+			x = conv_out_8
 			return x		
 		conv_out_8 = conv_out_8.reshape(conv_out_8.size(0), -1)
 		fc1_out = self.fc1(conv_out_8)

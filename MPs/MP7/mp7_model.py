@@ -54,15 +54,23 @@ class discriminator(nn.Module):
 		self.fc10 = nn.Linear(196, 10)
 		
 
-	def forward(self, x):
+	def forward(self, x, extract_features=0):
 		conv_out_1 = self.conv_layer1(x)
 		conv_out_2 = self.conv_layer2(conv_out_1)
 		conv_out_3 = self.conv_layer3(conv_out_2)
 		conv_out_4 = self.conv_layer4(conv_out_3)
+		if(extract_features==4):
+			x = conv_out_4
+			x = F.max_pool2d(x,8,8)
+			x = x.view(-1, 196)
+			return x
 		conv_out_5 = self.conv_layer5(conv_out_4)
 		conv_out_6 = self.conv_layer6(conv_out_5)
 		conv_out_7 = self.conv_layer7(conv_out_6)
 		conv_out_8 = self.conv_layer8(conv_out_7)
+		if(extract_features==8):
+			x = conv_out_8
+			return x		
 		conv_out_8 = conv_out_8.reshape(conv_out_8.size(0), -1)
 		fc1_out = self.fc1(conv_out_8)
 		fc10_out = self.fc10(conv_out_8)
