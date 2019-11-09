@@ -1,0 +1,420 @@
+----------------------------------------
+Begin Torque Prologue on nid25263
+at Sat Nov  2 20:17:47 CDT 2019
+Job Id:			10592714.bw
+Username:		tra200
+Group:			TRAIN_bayw
+Job name:		mp7_p1_1
+Requested resources:	nodes=01:ppn=16:xk,walltime=04:00:00,neednodes=01:ppn=16:xk
+Queue:			normal
+Account:		bayw
+End Torque Prologue:  0.119 elapsed
+----------------------------------------
+
+
+
+
+Files already downloaded and verified
+
+In epoch  0  the accuracy of the training set = 41.125801282051285
+
+In epoch  0  the accuracy of the testing set = 54.12381329113924
+
+In epoch  1  the accuracy of the training set = 56.43028846153846
+
+In epoch  1  the accuracy of the testing set = 60.49248417721519
+
+In epoch  2  the accuracy of the training set = 64.05849358974359
+
+In epoch  2  the accuracy of the testing set = 67.10838607594937
+
+In epoch  3  the accuracy of the training set = 68.79807692307692
+
+In epoch  3  the accuracy of the testing set = 70.73773734177215
+
+In epoch  4  the accuracy of the training set = 72.33373397435898
+
+In epoch  4  the accuracy of the testing set = 73.19026898734177
+
+In epoch  5  the accuracy of the training set = 75.39863782051282
+
+In epoch  5  the accuracy of the testing set = 74.01107594936708
+
+In epoch  6  the accuracy of the training set = 77.51802884615384
+
+In epoch  6  the accuracy of the testing set = 73.3682753164557
+
+In epoch  7  the accuracy of the training set = 78.84014423076923
+
+In epoch  7  the accuracy of the testing set = 77.13607594936708
+
+In epoch  8  the accuracy of the training set = 80.6630608974359
+
+In epoch  8  the accuracy of the testing set = 76.95806962025317
+
+In epoch  9  the accuracy of the training set = 81.79086538461539
+
+In epoch  9  the accuracy of the testing set = 78.26344936708861
+
+In epoch  10  the accuracy of the training set = 82.96875
+
+In epoch  10  the accuracy of the testing set = 80.78520569620254
+
+In epoch  11  the accuracy of the training set = 84.04847756410257
+
+In epoch  11  the accuracy of the testing set = 78.81724683544304
+
+In epoch  12  the accuracy of the training set = 84.71754807692308
+
+In epoch  12  the accuracy of the testing set = 81.05221518987342
+
+In epoch  13  the accuracy of the training set = 85.5869391025641
+
+In epoch  13  the accuracy of the testing set = 82.1004746835443
+
+In epoch  14  the accuracy of the training set = 86.15384615384616
+
+In epoch  14  the accuracy of the testing set = 82.6443829113924
+
+In epoch  15  the accuracy of the training set = 86.92708333333333
+
+In epoch  15  the accuracy of the testing set = 80.99287974683544
+
+In epoch  16  the accuracy of the training set = 87.62219551282051
+
+In epoch  16  the accuracy of the testing set = 81.99169303797468
+
+In epoch  17  the accuracy of the training set = 88.05288461538461
+
+In epoch  17  the accuracy of the testing set = 82.2685917721519
+
+In epoch  18  the accuracy of the training set = 88.35536858974359
+
+In epoch  18  the accuracy of the testing set = 83.54430379746836
+
+In epoch  19  the accuracy of the training set = 89.34094551282051
+
+In epoch  19  the accuracy of the testing set = 80.18196202531645
+
+In epoch  20  the accuracy of the training set = 89.68349358974359
+
+In epoch  20  the accuracy of the testing set = 80.9434335443038
+
+In epoch  21  the accuracy of the training set = 90.25841346153847
+
+In epoch  21  the accuracy of the testing set = 83.68275316455696
+
+In epoch  22  the accuracy of the training set = 90.64102564102564
+
+In epoch  22  the accuracy of the testing set = 82.82238924050633
+
+In epoch  23  the accuracy of the training set = 90.66907051282051
+
+In epoch  23  the accuracy of the testing set = 82.32792721518987
+
+In epoch  24  the accuracy of the training set = 90.9375
+
+In epoch  24  the accuracy of the testing set = 83.22784810126582
+
+In epoch  25  the accuracy of the training set = 91.38020833333333
+
+In epoch  25  the accuracy of the testing set = 84.40466772151899
+
+In epoch  26  the accuracy of the training set = 91.92908653846153
+
+In epoch  26  the accuracy of the testing set = 83.4948575949367
+
+In epoch  27  the accuracy of the training set = 92.27564102564102
+
+In epoch  27  the accuracy of the testing set = 84.42444620253164
+
+In epoch  28  the accuracy of the training set = 92.8525641025641
+
+In epoch  28  the accuracy of the testing set = 84.46400316455696
+
+In epoch  29  the accuracy of the training set = 93.02684294871794
+
+In epoch  29  the accuracy of the testing set = 84.02887658227849
+
+In epoch  30  the accuracy of the training set = 93.3193108974359
+
+In epoch  30  the accuracy of the testing set = 84.94857594936708
+
+In epoch  31  the accuracy of the training set = 93.33533653846153
+
+In epoch  31  the accuracy of the testing set = 85.04746835443038
+
+In epoch  32  the accuracy of the training set = 93.87219551282051
+
+In epoch  32  the accuracy of the testing set = 84.60245253164557
+
+In epoch  33  the accuracy of the training set = 93.84014423076923
+
+In epoch  33  the accuracy of the testing set = 85.21558544303798
+
+In epoch  34  the accuracy of the training set = 94.32692307692308
+
+In epoch  34  the accuracy of the testing set = 84.82001582278481
+
+In epoch  35  the accuracy of the training set = 94.42508012820512
+
+In epoch  35  the accuracy of the testing set = 84.46400316455696
+
+In epoch  36  the accuracy of the training set = 94.48717948717949
+
+In epoch  36  the accuracy of the testing set = 85.87816455696202
+
+In epoch  37  the accuracy of the training set = 95.07011217948718
+
+In epoch  37  the accuracy of the testing set = 85.16613924050633
+
+In epoch  38  the accuracy of the training set = 95.0801282051282
+
+In epoch  38  the accuracy of the testing set = 85.7001582278481
+
+In epoch  39  the accuracy of the training set = 95.17828525641026
+
+In epoch  39  the accuracy of the testing set = 85.71004746835443
+
+In epoch  40  the accuracy of the training set = 95.38661858974359
+
+In epoch  40  the accuracy of the testing set = 85.5320411392405
+
+In epoch  41  the accuracy of the training set = 95.83733974358974
+
+In epoch  41  the accuracy of the testing set = 85.6309335443038
+
+In epoch  42  the accuracy of the training set = 95.89142628205128
+
+In epoch  42  the accuracy of the testing set = 85.19580696202532
+
+In epoch  43  the accuracy of the training set = 95.72716346153847
+
+In epoch  43  the accuracy of the testing set = 84.94857594936708
+
+In epoch  44  the accuracy of the training set = 96.07972756410257
+
+In epoch  44  the accuracy of the testing set = 85.43314873417721
+
+In epoch  45  the accuracy of the training set = 96.05969551282051
+
+In epoch  45  the accuracy of the testing set = 86.23417721518987
+
+In epoch  46  the accuracy of the training set = 96.14783653846153
+
+In epoch  46  the accuracy of the testing set = 85.69026898734177
+
+In epoch  47  the accuracy of the training set = 96.35416666666667
+
+In epoch  47  the accuracy of the testing set = 85.5617088607595
+
+In epoch  48  the accuracy of the training set = 96.53846153846153
+
+In epoch  48  the accuracy of the testing set = 85.87816455696202
+
+In epoch  49  the accuracy of the training set = 96.45032051282051
+
+In epoch  49  the accuracy of the testing set = 86.7879746835443
+
+In epoch  50  the accuracy of the training set = 98.3974358974359
+
+In epoch  50  the accuracy of the testing set = 87.13409810126582
+
+In epoch  51  the accuracy of the training set = 98.65785256410257
+
+In epoch  51  the accuracy of the testing set = 87.20332278481013
+
+In epoch  52  the accuracy of the training set = 98.85616987179488
+
+In epoch  52  the accuracy of the testing set = 87.41099683544304
+
+In epoch  53  the accuracy of the training set = 98.90024038461539
+
+In epoch  53  the accuracy of the testing set = 87.42088607594937
+
+In epoch  54  the accuracy of the training set = 98.98838141025641
+
+In epoch  54  the accuracy of the testing set = 87.68789556962025
+
+In epoch  55  the accuracy of the training set = 99.0244391025641
+
+In epoch  55  the accuracy of the testing set = 87.50988924050633
+
+In epoch  56  the accuracy of the training set = 99.07051282051282
+
+In epoch  56  the accuracy of the testing set = 87.48022151898734
+
+In epoch  57  the accuracy of the training set = 99.1045673076923
+
+In epoch  57  the accuracy of the testing set = 87.46044303797468
+
+In epoch  58  the accuracy of the training set = 99.07051282051282
+
+In epoch  58  the accuracy of the testing set = 87.4011075949367
+
+In epoch  59  the accuracy of the training set = 99.14863782051282
+
+In epoch  59  the accuracy of the testing set = 87.63844936708861
+
+In epoch  60  the accuracy of the training set = 99.15665064102564
+
+In epoch  60  the accuracy of the testing set = 87.53955696202532
+
+In epoch  61  the accuracy of the training set = 99.2568108974359
+
+In epoch  61  the accuracy of the testing set = 87.5692246835443
+
+In epoch  62  the accuracy of the training set = 99.2588141025641
+
+In epoch  62  the accuracy of the testing set = 87.61867088607595
+
+In epoch  63  the accuracy of the training set = 99.36698717948718
+
+In epoch  63  the accuracy of the testing set = 87.74723101265823
+
+In epoch  64  the accuracy of the training set = 99.24479166666667
+
+In epoch  64  the accuracy of the testing set = 87.54944620253164
+
+In epoch  65  the accuracy of the training set = 99.20072115384616
+
+In epoch  65  the accuracy of the testing set = 87.60878164556962
+
+In epoch  66  the accuracy of the training set = 99.31089743589743
+
+In epoch  66  the accuracy of the testing set = 87.57911392405063
+
+In epoch  67  the accuracy of the training set = 99.27483974358974
+
+In epoch  67  the accuracy of the testing set = 87.6681170886076
+
+In epoch  68  the accuracy of the training set = 99.40504807692308
+
+In epoch  68  the accuracy of the testing set = 87.72745253164557
+
+In epoch  69  the accuracy of the training set = 99.35897435897436
+
+In epoch  69  the accuracy of the testing set = 87.74723101265823
+
+In epoch  70  the accuracy of the training set = 99.39703525641026
+
+In epoch  70  the accuracy of the testing set = 87.50988924050633
+
+In epoch  71  the accuracy of the training set = 99.36899038461539
+
+In epoch  71  the accuracy of the testing set = 87.62856012658227
+
+In epoch  72  the accuracy of the training set = 99.4130608974359
+
+In epoch  72  the accuracy of the testing set = 87.55933544303798
+
+In epoch  73  the accuracy of the training set = 99.39903846153847
+
+In epoch  73  the accuracy of the testing set = 87.57911392405063
+
+In epoch  74  the accuracy of the training set = 99.4110576923077
+
+In epoch  74  the accuracy of the testing set = 87.49011075949367
+
+In epoch  75  the accuracy of the training set = 99.453125
+
+In epoch  75  the accuracy of the testing set = 87.71756329113924
+
+In epoch  76  the accuracy of the training set = 99.48116987179488
+
+In epoch  76  the accuracy of the testing set = 87.7373417721519
+
+In epoch  77  the accuracy of the training set = 99.51722756410257
+
+In epoch  77  the accuracy of the testing set = 87.83623417721519
+
+In epoch  78  the accuracy of the training set = 99.58733974358974
+
+In epoch  78  the accuracy of the testing set = 87.74723101265823
+
+In epoch  79  the accuracy of the training set = 99.51722756410257
+
+In epoch  79  the accuracy of the testing set = 87.68789556962025
+
+In epoch  80  the accuracy of the training set = 99.53125
+
+In epoch  80  the accuracy of the testing set = 87.77689873417721
+
+In epoch  81  the accuracy of the training set = 99.50921474358974
+
+In epoch  81  the accuracy of the testing set = 87.69778481012658
+
+In epoch  82  the accuracy of the training set = 99.5332532051282
+
+In epoch  82  the accuracy of the testing set = 87.78678797468355
+
+In epoch  83  the accuracy of the training set = 99.54727564102564
+
+In epoch  83  the accuracy of the testing set = 87.77689873417721
+
+In epoch  84  the accuracy of the training set = 99.59334935897436
+
+In epoch  84  the accuracy of the testing set = 87.89556962025317
+
+In epoch  85  the accuracy of the training set = 99.5733173076923
+
+In epoch  85  the accuracy of the testing set = 87.79667721518987
+
+In epoch  86  the accuracy of the training set = 99.55128205128206
+
+In epoch  86  the accuracy of the testing set = 87.86590189873418
+
+In epoch  87  the accuracy of the training set = 99.61538461538461
+
+In epoch  87  the accuracy of the testing set = 87.79667721518987
+
+In epoch  88  the accuracy of the training set = 99.57532051282051
+
+In epoch  88  the accuracy of the testing set = 87.89556962025317
+
+In epoch  89  the accuracy of the training set = 99.4931891025641
+
+In epoch  89  the accuracy of the testing set = 87.83623417721519
+
+In epoch  90  the accuracy of the training set = 99.53525641025641
+
+In epoch  90  the accuracy of the testing set = 87.8065664556962
+
+In epoch  91  the accuracy of the training set = 99.54727564102564
+
+In epoch  91  the accuracy of the testing set = 87.7373417721519
+
+In epoch  92  the accuracy of the training set = 99.57732371794872
+
+In epoch  92  the accuracy of the testing set = 87.81645569620254
+
+In epoch  93  the accuracy of the training set = 99.58133012820512
+
+In epoch  93  the accuracy of the testing set = 87.81645569620254
+
+In epoch  94  the accuracy of the training set = 99.49719551282051
+
+In epoch  94  the accuracy of the testing set = 87.75712025316456
+
+In epoch  95  the accuracy of the training set = 99.48317307692308
+
+In epoch  95  the accuracy of the testing set = 87.67800632911393
+
+In epoch  96  the accuracy of the training set = 99.52123397435898
+
+In epoch  96  the accuracy of the testing set = 87.77689873417721
+
+In epoch  97  the accuracy of the training set = 99.55328525641026
+
+In epoch  97  the accuracy of the testing set = 87.76700949367088
+
+In epoch  98  the accuracy of the training set = 99.55929487179488
+
+In epoch  98  the accuracy of the testing set = 87.84612341772151
+
+In epoch  99  the accuracy of the training set = 99.5332532051282
+
+In epoch  99  the accuracy of the testing set = 87.8065664556962
+[41.125801282051285, 41.125801282051285, 56.43028846153846, 56.43028846153846, 64.05849358974359, 64.05849358974359, 68.79807692307692, 68.79807692307692, 72.33373397435898, 72.33373397435898, 75.39863782051282, 75.39863782051282, 77.51802884615384, 77.51802884615384, 78.84014423076923, 78.84014423076923, 80.6630608974359, 80.6630608974359, 81.79086538461539, 81.79086538461539, 82.96875, 82.96875, 84.04847756410257, 84.04847756410257, 84.71754807692308, 84.71754807692308, 85.5869391025641, 85.5869391025641, 86.15384615384616, 86.15384615384616, 86.92708333333333, 86.92708333333333, 87.62219551282051, 87.62219551282051, 88.05288461538461, 88.05288461538461, 88.35536858974359, 88.35536858974359, 89.34094551282051, 89.34094551282051, 89.68349358974359, 89.68349358974359, 90.25841346153847, 90.25841346153847, 90.64102564102564, 90.64102564102564, 90.66907051282051, 90.66907051282051, 90.9375, 90.9375, 91.38020833333333, 91.38020833333333, 91.92908653846153, 91.92908653846153, 92.27564102564102, 92.27564102564102, 92.8525641025641, 92.8525641025641, 93.02684294871794, 93.02684294871794, 93.3193108974359, 93.3193108974359, 93.33533653846153, 93.33533653846153, 93.87219551282051, 93.87219551282051, 93.84014423076923, 93.84014423076923, 94.32692307692308, 94.32692307692308, 94.42508012820512, 94.42508012820512, 94.48717948717949, 94.48717948717949, 95.07011217948718, 95.07011217948718, 95.0801282051282, 95.0801282051282, 95.17828525641026, 95.17828525641026, 95.38661858974359, 95.38661858974359, 95.83733974358974, 95.83733974358974, 95.89142628205128, 95.89142628205128, 95.72716346153847, 95.72716346153847, 96.07972756410257, 96.07972756410257, 96.05969551282051, 96.05969551282051, 96.14783653846153, 96.14783653846153, 96.35416666666667, 96.35416666666667, 96.53846153846153, 96.53846153846153, 96.45032051282051, 96.45032051282051, 98.3974358974359, 98.3974358974359, 98.65785256410257, 98.65785256410257, 98.85616987179488, 98.85616987179488, 98.90024038461539, 98.90024038461539, 98.98838141025641, 98.98838141025641, 99.0244391025641, 99.0244391025641, 99.07051282051282, 99.07051282051282, 99.1045673076923, 99.1045673076923, 99.07051282051282, 99.07051282051282, 99.14863782051282, 99.14863782051282, 99.15665064102564, 99.15665064102564, 99.2568108974359, 99.2568108974359, 99.2588141025641, 99.2588141025641, 99.36698717948718, 99.36698717948718, 99.24479166666667, 99.24479166666667, 99.20072115384616, 99.20072115384616, 99.31089743589743, 99.31089743589743, 99.27483974358974, 99.27483974358974, 99.40504807692308, 99.40504807692308, 99.35897435897436, 99.35897435897436, 99.39703525641026, 99.39703525641026, 99.36899038461539, 99.36899038461539, 99.4130608974359, 99.4130608974359, 99.39903846153847, 99.39903846153847, 99.4110576923077, 99.4110576923077, 99.453125, 99.453125, 99.48116987179488, 99.48116987179488, 99.51722756410257, 99.51722756410257, 99.58733974358974, 99.58733974358974, 99.51722756410257, 99.51722756410257, 99.53125, 99.53125, 99.50921474358974, 99.50921474358974, 99.5332532051282, 99.5332532051282, 99.54727564102564, 99.54727564102564, 99.59334935897436, 99.59334935897436, 99.5733173076923, 99.5733173076923, 99.55128205128206, 99.55128205128206, 99.61538461538461, 99.61538461538461, 99.57532051282051, 99.57532051282051, 99.4931891025641, 99.4931891025641, 99.53525641025641, 99.53525641025641, 99.54727564102564, 99.54727564102564, 99.57732371794872, 99.57732371794872, 99.58133012820512, 99.58133012820512, 99.49719551282051, 99.49719551282051, 99.48317307692308, 99.48317307692308, 99.52123397435898, 99.52123397435898, 99.55328525641026, 99.55328525641026, 99.55929487179488, 99.55929487179488, 99.5332532051282, 99.5332532051282]
+[]
+Application 82099697 resources: utime ~11428s, stime ~979s, Rss ~1566864, inblocks ~1622436, outblocks ~127152

@@ -4,3 +4,6 @@
 !/.gitignore
 !/*.py
 !/*.pbs
+!/*.p1_*.out
+!/output
+!/visualization
