@@ -13,6 +13,12 @@ import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
 import os, time
 
+n_z = 100
+n_classes = 10
+gen_train = 1
+num_epochs = 200
+batch_size = 12
+
 
 def plot(samples):
 	fig = plt.figure(figsize=(10, 10))
