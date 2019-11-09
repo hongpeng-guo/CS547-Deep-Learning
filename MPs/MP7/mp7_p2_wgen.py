@@ -49,7 +49,7 @@ model = torch.load('discriminator.model')
 model.cuda()
 model.eval()
 
-batch_idx, (X_batch, Y_batch) = testloader.next()
+batch_idx, (X_batch, Y_batch) = testloader.__next__()
 X_batch = Variable(X_batch,requires_grad=True).cuda()
 Y_batch_alternate = (Y_batch + 1)%10
 Y_batch_alternate = Variable(Y_batch_alternate).cuda()
