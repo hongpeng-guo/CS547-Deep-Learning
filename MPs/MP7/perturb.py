@@ -45,7 +45,7 @@ testset = torchvision.datasets.CIFAR10(root='./', train=False, download=False, t
 testloader = torch.utils.data.DataLoader(testset, batch_size=batch_size, shuffle=False, num_workers=8)
 testloader = enumerate(testloader)
 
-model = torch.load('discriminator.model')
+model = torch.load('cifar10.model')
 model.cuda()
 model.eval()
 
@@ -62,7 +62,7 @@ samples /= 2.0
 samples = samples.transpose(0,2,3,1)
 
 fig = plot(samples[0:100])
-plt.savefig('visualization/w_real_images.png', bbox_inches='tight')
+plt.savefig('visualization/real_images.png', bbox_inches='tight')
 plt.close(fig)
 
 _, output = model(X_batch)
@@ -83,7 +83,7 @@ gradient_image = gradients.data.cpu().numpy()
 gradient_image = (gradient_image - np.min(gradient_image))/(np.max(gradient_image)-np.min(gradient_image))
 gradient_image = gradient_image.transpose(0,2,3,1)
 fig = plot(gradient_image[0:100])
-plt.savefig('visualization/w_gradient_image.png', bbox_inches='tight')
+plt.savefig('visualization/gradient_image.png', bbox_inches='tight')
 plt.close(fig)
 
 # jitter input image
@@ -108,39 +108,5 @@ samples /= 2.0
 samples = samples.transpose(0,2,3,1)
 
 fig = plot(samples[0:100])
-plt.savefig('visualization/w_jittered_images.png', bbox_inches='tight')
-plt.close(fig)
-
-X = X_batch.mean(dim=0)
-X = X.repeat(10,1,1,1)
-
-Y = torch.arange(10).type(torch.int64)
-Y = Variable(Y).cuda()
-
-lr = 0.1
-weight_decay = 0.001
-for i in range(200):
-    _, output = model(X)
-
-    loss = -output[torch.arange(10).type(torch.int64),torch.arange(10).type(torch.int64)]
-    gradients = torch.autograd.grad(outputs=loss, inputs=X,
-                              grad_outputs=torch.ones(loss.size()).cuda(),
-                              create_graph=True, retain_graph=False, only_inputs=True)[0]
-
-    prediction = output.data.max(1)[1] # first column has actual prob.
-    accuracy = ( float( prediction.eq(Y.data).sum() ) /float(10.0))*100.0
-    print(i,accuracy,-loss)
-
-    X = X - lr*gradients.data - weight_decay*X.data*torch.abs(X.data)
-    X[X>1.0] = 1.0
-    X[X<-1.0] = -1.0
-
-## save new images
-samples = X.data.cpu().numpy()
-samples += 1.0
-samples /= 2.0
-samples = samples.transpose(0,2,3,1)
-
-fig = plot(samples)
-plt.savefig('visualization/w_max_class.png', bbox_inches='tight')
+plt.savefig('visualization/jittered_images.png', bbox_inches='tight')
 plt.close(fig)
