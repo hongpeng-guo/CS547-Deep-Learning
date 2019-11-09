@@ -56,7 +56,7 @@ samples /= 2.0
 samples = samples.transpose(0,2,3,1)
 
 fig = plot(samples[0:100])
-plt.savefig('visualization/real_images.png', bbox_inches='tight')
+plt.savefig('visualization/wo_real_images.png', bbox_inches='tight')
 plt.close(fig)
 
 _, output = model(X_batch)
@@ -77,7 +77,7 @@ gradient_image = gradients.data.cpu().numpy()
 gradient_image = (gradient_image - np.min(gradient_image))/(np.max(gradient_image)-np.min(gradient_image))
 gradient_image = gradient_image.transpose(0,2,3,1)
 fig = plot(gradient_image[0:100])
-plt.savefig('visualization/gradient_image.png', bbox_inches='tight')
+plt.savefig('visualization/wo_gradient_image.png', bbox_inches='tight')
 plt.close(fig)
 
 # jitter input image
@@ -102,7 +102,7 @@ samples /= 2.0
 samples = samples.transpose(0,2,3,1)
 
 fig = plot(samples[0:100])
-plt.savefig('visualization/jittered_images.png', bbox_inches='tight')
+plt.savefig('visualization/wo_jittered_images.png', bbox_inches='tight')
 plt.close(fig)
 
 X = X_batch.mean(dim=0)
@@ -136,5 +136,5 @@ samples /= 2.0
 samples = samples.transpose(0,2,3,1)
 
 fig = plot(samples)
-plt.savefig('visualization/max_class.png', bbox_inches='tight')
+plt.savefig('visualization/wo_max_class.png', bbox_inches='tight')
 plt.close(fig)
