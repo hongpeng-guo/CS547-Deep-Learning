@@ -212,5 +212,5 @@ samples /= 2.0
 samples = samples.transpose(0,2,3,1)
 
 fig = plot(samples)
-plt.savefig('visualization/wo_max_features_L8.png', bbox_inches='tight')
+plt.savefig('visualization/wo_max_features_L4.png', bbox_inches='tight')
 plt.close(fig)
