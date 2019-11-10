@@ -182,9 +182,9 @@ Y_batch_alternate = Variable(Y_batch_alternate).cuda()
 Y_batch = Variable(Y_batch).cuda()
 
 X = X_batch.mean(dim=0)
-X = X.repeat(10,1,1,1)
+X = X.repeat(batch_size,1,1,1)
 
-Y = torch.arange(10).type(torch.int64)
+Y = torch.arange(batch_size).type(torch.int64)
 Y = Variable(Y).cuda()
 
 lr = 0.1
