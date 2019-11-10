@@ -17,7 +17,7 @@ n_z = 100
 n_classes = 10
 gen_train = 1
 num_epochs = 200
-batch_size = 12
+batch_size = 128
 
 
 def plot(samples):
