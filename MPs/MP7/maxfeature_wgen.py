@@ -191,7 +191,7 @@ weight_decay = 0.001
 for i in range(200):
 	output = model(X, extract_features=4)
 
-	loss = -output[torch.arange(10).type(torch.int64),torch.arange(10).type(torch.int64)]
+	loss = -output[torch.arange(batch_size).type(torch.int64),torch.arange(batch_size).type(torch.int64)]
 	gradients = torch.autograd.grad(outputs=loss, inputs=X,
 							  grad_outputs=torch.ones(loss.size()).cuda(),
 							  create_graph=True, retain_graph=False, only_inputs=True)[0]
