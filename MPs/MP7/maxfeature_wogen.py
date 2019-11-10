@@ -190,7 +190,7 @@ Y = Variable(Y).cuda()
 lr = 0.1
 weight_decay = 0.001
 for i in range(200):
-	output = model(X, extract_features=8)
+	output = model(X, extract_features=4)
 
 	loss = -output[torch.arange(10).type(torch.int64),torch.arange(10).type(torch.int64)]
 	gradients = torch.autograd.grad(outputs=loss, inputs=X,
@@ -212,5 +212,5 @@ samples /= 2.0
 samples = samples.transpose(0,2,3,1)
 
 fig = plot(samples[0:100])
-plt.savefig('visualization/wo_max_features_L8.png', bbox_inches='tight')
+plt.savefig('visualization/wo_max_features_L4.png', bbox_inches='tight')
 plt.close(fig)
