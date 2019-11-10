@@ -197,7 +197,7 @@ for i in range(200):
 							  create_graph=True, retain_graph=False, only_inputs=True)[0]
 
 	prediction = output.data.max(1)[1] # first column has actual prob.
-	accuracy = ( float( prediction.eq(Y.data).sum() ) /float(10.0))*100.0
+	accuracy = ( float( prediction.eq(Y.data).sum() ) /float(batch_size))*100.0
 	print(i,accuracy,-loss)
 
 	X = X - lr*gradients.data - weight_decay*X.data*torch.abs(X.data)
