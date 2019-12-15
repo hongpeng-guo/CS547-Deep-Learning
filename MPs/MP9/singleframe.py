@@ -106,7 +106,7 @@ pool_threads = Pool(8,maxtasksperchild=200)
 
 ##### TEST
 model.eval()
-_accu = []
+test_accu = []
 random_indices = np.random.permutation(len(test[0]))
 t1 = time.time()
 for i in range(0,len(test[0])-batch_size,batch_size):
