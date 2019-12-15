@@ -6,7 +6,7 @@
 #PBS -o $PBS_JOBID.singleframe.out
 #PBS -m bea
 #PBS -M hg5@illinois.edu
-cd /u/training/tra200/CS547-Deep-Learning/MP9
+cd /u/training/tra200/CS547-Deep-Learning/MPs/MP9
 . /opt/modules/default/init/bash 
 
 module load bwpy/2.0.0-pre2
