@@ -10,7 +10,7 @@ import h5py
 import cv2
 import numpy as np
 
-data_directory = '/projects/training/bayw/hdf5/UCF-101-hdf5/'
+data_directory = '/projects/training/bayw/hdf5/'
 class_list, train, test = getUCF101(base_directory = data_directory)
 
 con_matrix = np.load('single_frame_confusion_matrix.npy')
