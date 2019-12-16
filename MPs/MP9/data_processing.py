@@ -24,7 +24,8 @@ for i in range(len(con_matrix)):
 		to_sort_list.append((con_matrix[i,j], i, j))
 
 to_sort_list.sort()
-result_list = to_sort_list[10:]
+to_sort_list.reverse()
+result_list = to_sort_list[:10]
 
 for prob, i, j in result_list:
 	print ('Misidentify {} to be {} of percentage {}'.format(class_list[i], class_list[j], prob))
