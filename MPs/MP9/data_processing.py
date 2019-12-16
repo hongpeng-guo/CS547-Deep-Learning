@@ -27,5 +27,5 @@ to_sort_list.sort()
 result_list = to_sort_list[10:]
 
 for prob, i, j in result_list:
-	print ('Misidentify {} to be {} of percentage {}'.format(i, j, prob))
+	print ('Misidentify {} to be {} of percentage {}'.format(class_list[i], class_list[j], prob))
 
